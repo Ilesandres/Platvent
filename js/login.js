@@ -47,10 +47,8 @@ function iniciarSecion() {
           icon: "success",
         });
         sessionStorage.setItem('userclasId',idUserres) ;
-<<<<<<< HEAD
+
         sessionStorage.setItem('xuclmt',idUserres,',',user,',',data.usuario);
-=======
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
         window.location.href = "/php/pantallas/user.php?numuser="+idUserres+"&user"+user;
 
       } else {

@@ -32,3 +32,10 @@ overflow: hidden;
 overflow-y: scroll;
 
 }
+
+ul{
+ list-style-type: none;
+ li{
+    background-color: blanchedalmond;
+ }
+}

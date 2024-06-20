@@ -18,9 +18,7 @@ document
     }
   });
 
-<<<<<<< HEAD
 
-=======
 function cerrarSesion() {
   sessionStorage.removeItem("user");
   sessionStorage.removeItem("super");
@@ -37,7 +35,7 @@ function cerrarSesion() {
     }
   });
 }
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+
 
 function acercaDe() {
   Swal.fire({

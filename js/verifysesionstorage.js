@@ -5,16 +5,16 @@ function sesionStorage() {
     // Verifica si el usuario está autenticado
     if (user !== null) {
         // Verifica si la ruta actual es diferente de la ruta protegida
-<<<<<<< HEAD
+
         if (currentPath !== '/php/pantallas/user.php' && currentPath !=='/php/pantallas/modifyProduct.php' && currentPath!='/php/pantallas/buscarProduct.php'
         && currentPath !='/php/pantallas/vender.php' && currentPath !=='/php/pantallas/perfil.php'
         ) {
-=======
-        if (currentPath !== '/php/pantallas/user.php' && currentPath !=='/php/pantallas/modifyProduct.php' && currentPath!='/php/pantallas/buscarProduct.php') {
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+
+       
             window.location.href = "/php/pantallas/user.php";
-        }
-    } else {
+
+    } 
+  }else {
         // Si el usuario no está autenticado, muestra una alerta y redirige al inicio de sesión
         Swal.fire({
             icon: 'error',
@@ -27,11 +27,11 @@ function sesionStorage() {
             }
         });
     }
-  }
+}
   
   // Ejecuta la función
   sesionStorage();
-<<<<<<< HEAD
+
   
   
   function cerrarSesion() {
@@ -39,7 +39,7 @@ function sesionStorage() {
     sessionStorage.removeItem("super");
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("userclasId");
-    sessionStorage.removeItem('xuclmt');
+    sessionStorage.removeItem("xuclmt");
     Swal.fire({
       icon: "success",
       title: "Sesión cerrada",
@@ -51,6 +51,4 @@ function sesionStorage() {
       }
     });
   }
-=======
-  
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+

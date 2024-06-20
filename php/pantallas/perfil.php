@@ -142,7 +142,7 @@ $idUserGet=$_GET['user'];
       <p class="description-text">
         Include a description about your project, mentioning any specific technologies that you used.
       </p>
-      <a href="https://github.com/" class="btn btn-primary active" role="button" aria-pressed="true">View Source Code</a>
+    
     </main>
     
     
@@ -159,10 +159,6 @@ $idUserGet=$_GET['user'];
     </tbody>
 
 <script src="/js/perfil.js"></script>
-<<<<<<< HEAD
-<script src="/js/verifysesionstorage.js"> </script>
-=======
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
 </body>
 
 </html>

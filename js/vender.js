@@ -67,3 +67,43 @@ function registrarCliente() {
         });
     }
 }
+
+
+document.getElementById('IDcliente').addEventListener('keyup', function(e){
+    console.log('1')
+    let userId=document.getElementById('IDcliente');
+    let userIdinput=userId.value;
+    let lista=document.getElementById('list');
+    console.log(userIdinput)
+    
+    let formdata= new FormData();
+    formdata.append('IDcliente',userIdinput);
+    
+    if(userIdinput){
+    
+    fetch('/php/controladores/buscarClienteporId.php',{
+        
+        method:'POST',
+        body:formdata,
+        mode:'cors'
+    }).then(response=>response.json())
+    .then((data) => {
+        console.log(data);
+        lista.style.display='block';
+        lista.innerHTML=data;
+        
+    })
+    .catch(err=>console.log('ERROR',err));
+    
+    }
+    
+
+
+});
+
+document.getElementById('IDcliente').addEventListener('blur',function(e){
+    
+    let lista=document.getElementById('list');
+    lista.style.display='none';
+});
+

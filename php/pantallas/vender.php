@@ -84,8 +84,12 @@
                 
                 <div class="mb-3">
                     <label for="IDcliente" class="form-label">ID Cliente</label>
-                    <input type="text" id="IDcliente" name="IDcliente" class="form-control"
+                    <input type="number" id="IDcliente" name="IDcliente" class="form-control"
                         placeholder=" ID cliente" >
+                        <table class="table table-striped">
+                        <ul id="list" > </ul>
+                        </table>
+                        
                 </div>
                 <div class="mb-3">
                     <label for="identificaion" class="form-label"> ID</label>
@@ -93,14 +97,8 @@
                         placeholder=" identificaion">
                 </div>
                 <div class="mb-3">
-                    <label for="identificaion" class="form-label"> ID</label>
-                    <input type="text" id="identificaion" name="identificaion" class="form-control"
-                        placeholder=" identificaion">
-                </div>
-                <div class="mb-3">
-                    <label for="identificaion" class="form-label"> ID</label>
-                    <input type="text" id="identificaion" name="identificaion" class="form-control"
-                        placeholder=" identificaion">
+                <button type="button" class="btn btn-success">agregar</button>
+                 
                 </div>
 
                 

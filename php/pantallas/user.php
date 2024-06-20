@@ -26,11 +26,11 @@
         <button class="btn btn-primary mx-2" title="inicio" onclick="window.location='/index.php'"><i class="fa-solid fa-house"></i></button>
         <a class="btn btn-primary" data-bs-toggle="modal" title="buscar" href="#exampleModalToggle" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
         <buttom class="btn btn-primary mx-2 " title="perfil" onclick="perfil()"><i class="fa-solid fa-house-user"></i></buttom>
-<<<<<<< HEAD
+
         <buttom class="btn btn-primary mx-2 " title="vender" onclick="window.location.href='/php/pantallas/vender.php'"><i class="fa-solid fa-store"></i></buttom>
-=======
+
         <buttom class="btn btn-primary mx-2 " ></buttom>
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+
         <buttom class="btn btn-primary mx-2 " ></buttom>
         <button class="btn btn-danger mx-2" title="cerrar sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
         
@@ -59,11 +59,11 @@
                 
             
             </div>
-<<<<<<< HEAD
+
                 escribe los valores para la busqueda
-=======
+
                 Show a second modal and hide this one with the button below.
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+
             </div>
             <div class="modal-footer">
             
@@ -207,10 +207,10 @@
         <button class="btn btn-info">Acerca de</button>
     </footer>
 
-<<<<<<< HEAD
-=======
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
->>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
+
     <script src="/js/verifysesionstorage.js"></script>
     <script src="/js/user.js"> </script>
     
