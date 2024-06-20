@@ -7,25 +7,34 @@ $conexion=conectarDB();
 
 $campo=$_POST['IDcliente'];
 
-$sql="select cliente.ciNit, cliente.nombre, cliente.apellido from cliente where cliente.cinit like '%$campo%' order by  cliente.nombre asc";
+if($campo){
+    $sql="select cliente.ciNit, cliente.nombre, cliente.apellido from cliente where cliente.cinit like '%$campo%' order by  cliente.nombre asc";
 
-$consulta=$conexion->query($sql);
+    $consulta=$conexion->query($sql);
 
-$html='';
+    $html='';
 
-$Lista=array();
-if($consulta){
-    if($consulta->num_rows > 0 ){
-        while($row = $consulta->fetch_assoc()){
+    $Lista=array();
+    if($consulta){
+        if($consulta->num_rows > 0 ){
+            while($row = $consulta->fetch_assoc()){
+            
+            
+            $html.='<li>'.$row['ciNit'].'-'.$row['nombre'].'-'.$row['apellido'].'</li><button type="button" onclick="añadirID('.$row['ciNit'].')">add</button>';
+            
+            
+            }
         
-         $html.='<li>'.$row['ciNit'].'-'.$row['nombre'].'-'.$row['apellido'].'</li>';
-        
-        
-        }
-     echo json_encode($html, JSON_UNESCAPED_UNICODE );
+        }else{
+        $html.= "<li>no hay datos</li>";
     }
-    
+
+        echo json_encode($html, JSON_UNESCAPED_UNICODE );
+    }
+
 }
+
+
 
 
 

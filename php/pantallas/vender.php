@@ -77,9 +77,60 @@
         
         <div class="col-5">
             <legend class="text-center">Compra</legend>
+                <p>las facturas se agregan y editan automaticamente si tienes datos en ella, procura dar click en factura nueva para limpiar todos los valores</p>
+            
                 <div class="mb-3">
                     <label for="idFactura" class="form-label">id Factura </label>
-                    <input type="text" name="idFactura" class="form-control" readonly>  
+                    <input type="text" name="idFactura" id="idfactura" class="form-control" readonly>  
+                </div>
+                <div class="mb-3">
+                    <label for="idvendedor" class="form-label">id Vendedor </label>
+                    <input type="text" name="idvendedor" id="idvendedor" class="form-control" readonly>  
+                </div>
+                <div class="mb-3">
+                <label for="estadofactura" class="form-label">estado de la factura</label>
+                <select class="form-select" name="estadofactura" id="estadofactura">
+                <option value="null">estado factura</option>
+                
+                <?php 
+                
+                require_once '/platvent_2/php/controladores/config.php';
+                $conn=conectarDB();
+                    
+                    $estadoF='select * from estadoventa';
+                    $estadofactura=$conn->query($estadoF);
+                    if($estadofactura->num_rows>0){
+                      
+                        while($datos= $estadofactura->fetch_assoc()){
+                            if($datos['estado_venta']=='en proceso'){
+                            ?>
+                             <option value="<?=$datos['id']?>" selected><?=$datos['estado_venta']?></option>
+                            
+                            <?php
+                            
+                            }else{
+                        ?>
+                        
+                        
+                        <option value="<?=$datos['id']?>"><?=$datos['estado_venta']?></option>
+                        
+                        
+                        
+                        <?php
+                            }
+                        
+                        }
+                        
+                        }
+    
+                    
+                
+                ?>
+                
+                    
+                    
+                </select>
+                
                 </div>
                 
                 <div class="mb-3">
@@ -92,14 +143,16 @@
                         
                 </div>
                 <div class="mb-3">
-                    <label for="identificaion" class="form-label"> ID</label>
-                    <input type="text" id="identificaion" name="identificaion" class="form-control"
-                        placeholder=" identificaion">
+                    <label for="nombrecliente" class="form-label"> Nombre</label>
+                    <input type="text" id="nombrecliente" name="nombrecliente" class="form-control"
+                        placeholder=" nombre cliente" readonly>
                 </div>
+                
                 <div class="mb-3">
-                <button type="button" class="btn btn-success">agregar</button>
+                <button type="button" onclick="limpiarFactura()" class="btn btn-success">nueva factura</button>
                  
                 </div>
+                
 
                 
         </div>
