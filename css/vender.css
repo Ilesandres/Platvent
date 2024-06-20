@@ -1,13 +1,14 @@
 
 .scroll-bg{
 
-    width: 90%;
+    width: 105%;
     margin: 10% auto;
+    transform: translateX(-2%);
     
 }
 
 .scroll-div{
-    width: 100%;
+    width: 105%;
     height: 50%;
     overflow: hidden;
     overflow-y: scroll;
@@ -23,6 +24,7 @@
 width: 100%;
 margin: auto;
 height: 80%;
+transform: translateX(2%);
 }
 
 .products-scroll{

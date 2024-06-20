@@ -75,10 +75,11 @@ let estadoFactura=document.getElementById('estadofactura').value;
 let idVendedor=sessionStorage.getItem('userclasId');
 vendedor.value=idVendedor;
 let EFactura=factura.value;
+let IDCliente=idCliente;
+ let colID=colcId;
 if(!estadoFactura || estadoFactura!=='null'){
     if(!EFactura){
-            let IDCliente=idCliente;
-            let colID=colcId;
+            
 
         let formdata= new FormData();
         formdata.append("id_cliente", IDCliente);
@@ -96,13 +97,18 @@ if(!estadoFactura || estadoFactura!=='null'){
             }).then(response=>response.json())
             .then((data)=>{
             factura.value=data.idFactura;
+            Swal.fire({
+                title:'factura creada con exito',
+                text: 'añade productos o quita productos de esta factura si lo desesa',
+                icon:'success',
+                })
 
             })
             .catch((err)=>{console.log('error '+err)})
         }
     
     }else{
-     modificarFactura();
+     modificarFactura(colcId);
     }
     }
 
@@ -111,12 +117,14 @@ if(!estadoFactura || estadoFactura!=='null'){
 
 }
 
-function modificarFactura(){
+
+function modificarFactura(ClienteID){
 
 let estadoFactura=document.getElementById('estadofactura').value;
 let IDFactura=document.getElementById('idfactura').value;
+let IDCliente=ClienteID;
 let IdVendedor=document.getElementById('idvendedor').value;
-let IDCliente= document.getElementById('IDcliente').value;
+let ciNIt= document.getElementById('IDcliente').value;
 let formdata= new FormData();
 
 
@@ -124,7 +132,8 @@ if(estadoFactura && IDFactura && IdVendedor && IDCliente){
     formdata.append("idFactura", IDFactura);
     formdata.append('idVendedor',IdVendedor);
     formdata.append('id_cliente', IDCliente);
-    formdata.append('estadofactura',estadoFactura)
+    formdata.append('estadofactura',estadoFactura);
+    formdata.append('ciNIt',ciNIt);
 
     
     fetch('/php/controladores/modificarFacturaID.php',{
@@ -135,7 +144,11 @@ if(estadoFactura && IDFactura && IdVendedor && IDCliente){
     })
     .then(response=>response.json())
     .then((data)=>{
-        console.log(data);
+        Swal.fire({
+        title:'factura editada con exito',
+        text: 'añade productos o quita productos de esta factura si lo desesa',
+        icon:'success',
+        })
     })
     .catch((err)=>{
     console.log('ERROR : ',err);

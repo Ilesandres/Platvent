@@ -146,7 +146,12 @@
                     <label for="nombrecliente" class="form-label"> Nombre</label>
                     <input type="text" id="nombrecliente" name="nombrecliente" class="form-control"
                         placeholder=" nombre cliente" readonly>
+                        <br>
+                        <label for="total" class="form-label"> total</label>
+                    <input type="text" id="total" name="total" class="form-control"
+                        placeholder=" total" value="0" readonly>
                 </div>
+                
                 
                 <div class="mb-3">
                 <button type="button" onclick="limpiarFactura()" class="btn btn-success">nueva factura</button>
@@ -189,6 +194,25 @@
                 <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead class="bg-primary text-white">
+                            <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Unidad de Medida</th>
+                            <th scope="col">cantidad</th>
+                            <th scope="col">Precio Base</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                            <th scope="col">quitar</th>
+                            </tr>
+                                 
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                         </table>
+                        
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non quidem illo modi enim rerum maxime sequi eaque consectetur quo ipsum officia soluta culpa adipisci asperiores ullam ipsam ratione totam, molestiae nam minima expedita doloribus temporibus itaque quam? Suscipit pariatur a delectus ipsa, totam doloremque, voluptas nostrum excepturi odit ipsum modi repellat deserunt dolorum. Ad blanditiis excepturi voluptatum minus eos! Fugit, illo! Mollitia id temporibus beatae neque iusto incidunt corrupti officia tenetur labore consequatur dolor, asperiores accusamus, rem quas et, vel voluptate error ad unde nobis tempore vero esse! Deleniti ex illo praesentium rem itaque consectetur placeat blanditiis magnam veritatis perferendis impedit ea quis nulla ut voluptate laboriosam, nihil maiores animi a. Nesciunt eaque dignissimos, fuga excepturi ipsam itaque dolore in? Necessitatibus recusandae qui sed tempora quae illum ut assumenda deleniti, earum nostrum atque nemo? At voluptate assumenda, odio perferendis, nihil eligendi ducimus iure incidunt delectus, sit id quas sapiente! Laboriosam aspernatur eius maiores quasi necessitatibus quisquam quidem voluptate perspiciatis deleniti quod ipsa dolores hic unde repellendus, dignissimos in blanditiis tempora doloremque. Cum accusamus enim sapiente, animi eveniet pariatur molestias exercitationem voluptatibus amet ratione nihil eius a repudiandae odio aut unde cupiditate fuga quia! Veniam ipsam placeat delectus tempora, inventore quasi esse asperiores magni unde, dolores voluptatibus mollitia nobis, ullam animi temporibus? Laudantium odio incidunt ut necessitatibus aperiam molestiae quisquam ratione consectetur voluptates similique ipsam ab tempore, corporis vitae omnis deserunt! Temporibus voluptates rerum, animi obcaecati natus sunt consequatur ut consequuntur sint quae nulla perferendis, delectus error consectetur. Fuga, fugit non.
                         
                         </div>
