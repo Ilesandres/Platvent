@@ -55,7 +55,11 @@
                 
             
             </div>
+<<<<<<< HEAD
             escribe los valores para la busqueda
+=======
+                Show a second modal and hide this one with the button below.
+>>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
             </div>
             <div class="modal-footer">
                   

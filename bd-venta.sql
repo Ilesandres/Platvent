@@ -29,8 +29,13 @@ DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `ciNit` varchar(15) NOT NULL,
+<<<<<<< HEAD
   nombre varchar(50)  not null default 'cam',
   `apellido` varchar(50) NOT NULL,
+=======
+  `razonSocial` varchar(50) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1,
+>>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
   `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp(),
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -42,6 +47,7 @@ CREATE TABLE `cliente` (
 -- ORDER BY:  `id`
 
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `cliente` (`id`, `ciNit`, `apellido`, `fechaRegistro`, `fechaActualizacion`) VALUES 
 (1,'7844102','Perez','2019-11-16 12:54:18','2019-11-16 12:54:18'),
 (2,'9833205','Sanchez','2019-11-16 12:54:18','2019-11-16 12:54:18'),
@@ -53,6 +59,9 @@ INSERT INTO `cliente` (`id`, `ciNit`, `apellido`, `fechaRegistro`, `fechaActuali
 (8,'4755102','Merida','2019-11-16 12:54:18','2019-11-16 12:54:18'),
 (9,'8850230','Peñarrieta','2019-11-16 12:54:18','2019-11-16 12:54:18'),(
 10,'6855102','Gutierrez','2019-11-16 12:54:18','2019-11-16 12:54:18');
+=======
+INSERT INTO `cliente` (`id`, `ciNit`, `razonSocial`, `estado`, `fechaRegistro`, `fechaActualizacion`) VALUES (1,'7844102','Perez',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(2,'9833205','Sanchez',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(3,'4455021','Hoyos',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(4,'9522145011','Ramirez',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(5,'6615423012','Gutierrez',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(6,'9866325','Vargas',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(7,'7822365-1A','Torrico',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(8,'4755102','Merida',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(9,'8850230','Peñarrieta',1,'2019-11-16 12:54:18','2019-11-16 12:54:18'),(10,'6855102','Gutierrez',1,'2019-11-16 12:54:18','2019-11-16 12:54:18');
+>>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 --
@@ -297,6 +306,10 @@ CREATE TABLE `venta` (
   `fecha` datetime NOT NULL,
   `total` decimal(18,2) NOT NULL DEFAULT 0.00,
   idestado int,
+<<<<<<< HEAD
+=======
+  `estado` tinyint(4) NOT NULL DEFAULT 1,
+>>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
   `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp(),
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -313,6 +326,7 @@ CREATE TABLE `venta` (
 -- ORDER BY:  `id`
 
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `venta` (`id`, `idCliente`, `idUsuario`, `fecha`, `total`, 
  `fechaRegistro`, `fechaActualizacion`) VALUES 
 (1,1,1,'2012-03-01 00:00:00',1990.00,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
@@ -326,6 +340,20 @@ INSERT INTO `venta` (`id`, `idCliente`, `idUsuario`, `fecha`, `total`,
 (9,9,1,'2012-03-03 00:00:00',2395.00,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
 (10,1,1,'2012-03-06 00:00:00',1670.00,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
 (11,9,1,'2015-11-24 11:39:04',165.00,'2019-11-16 12:55:06','2019-11-16 12:55:06');
+=======
+INSERT INTO `venta` (`id`, `idCliente`, `idUsuario`, `fecha`, `total`, `estado`, `fechaRegistro`, `fechaActualizacion`) VALUES 
+(1,1,1,'2012-03-01 00:00:00',1990.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(2,2,1,'2012-03-02 00:00:00',1620.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(3,3,1,'2013-03-02 00:00:00',1292.50,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(4,4,1,'2012-03-01 00:00:00',2232.50,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(5,5,1,'2012-03-03 00:00:00',1202.50,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(6,6,1,'2012-03-05 00:00:00',1435.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(7,7,1,'2012-03-03 00:00:00',657.50,0,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(8,8,1,'2012-03-03 00:00:00',850.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(9,9,1,'2012-03-03 00:00:00',2395.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(10,1,1,'2012-03-06 00:00:00',1670.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06'),
+(11,9,1,'2015-11-24 11:39:04',165.00,1,'2019-11-16 12:55:06','2019-11-16 12:55:06');
+>>>>>>> 8fcd0467dfe06f5dc9e912f2b0b319c3bc238a67
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 
 
