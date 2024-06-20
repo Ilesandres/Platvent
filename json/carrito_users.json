@@ -1,0 +1,57 @@
+[
+    {
+        "IdUSer": 651206159254,
+        "User":"Andres",
+        "nombre": "Disco solido 1 tb",
+        "categoria": "Tecnologia",
+        "precio": "2323",
+        "tienda": "Platvent",
+        "descripcion": "sadsa",
+        "estado": "nuevo",
+        "imagen": "unidad-de-estado-solido-1tg0a.jpg"
+    },
+    {
+        "IdUSer": 651489326,
+        "User":"Platvent",
+        "nombre": "auxiliar de audio 5.1",
+        "categoria": "Accesorios computadores",
+        "precio": "650000",
+        "tienda": "Platvent",
+        "descripcion": "\u2022 Soporta audio posicional en 4\/6 CH en modo de altavoz\r\n\u2022 Soporta m\u00fasica directa y acelerac\u00edon de hardware de sonido directo\r\n\u2022 Puerotos de juegos duales de alto rendimiento\r\n\u2022 Interfaz MPU401 compatible MIDI\r\n\u2022 Reproducci\u00f3n de c\u00f3dec de 16-bit y grabaci\u00f3n\r\n\u2022 Compatible con Sound Blaster, Sound Blaster Pro y Microsoft DirectSound\r\n\u2022 Aplicaciones de software incluidos Audio Rack y WinRip\r\n\u2022 Cumple con especificaciones MicrosoftR PC99",
+        "estado": "nuevo",
+        "imagen": "SM-live Values 5.1.jpg"
+    },
+    {
+        "IdUSer": 1695934235,
+        "User":"Platvent",
+        "nombre": "otg a microusb",
+        "categoria": "Tecnologia",
+        "precio": "10000",
+        "tienda": "Platvent",
+        "descripcion": "fdsadsadsasdas",
+        "estado": "Nuevo",
+        "imagen": "otg_microusb.png"
+    },
+    {
+        "IdUSer": 1696093075,
+        "User":"Platvent",
+        "nombre": "usb a bluethot 5.0",
+        "categoria": "Tecnologia",
+        "precio": "15000",
+        "tienda": "Platvent",
+        "descripcion": "\"Somos COMPRAS DE VERDAD Vendedores con m\u00e1s de 10 a\u00f1os de experiencia en MercadoLibre y comercio en l\u00ednea, Lo que certifica nuestro compromiso y seguridad en tus compras.\"\r\n\r\nFICHA TECNICA:\r\n\r\nEste adaptador USB permite que tus equipos se comuniquen y compartan informaci\u00f3n por Bluetooth.\r\n\r\n\u00bfPARA QUE ME SIRVE EL PRODUCTO?\r\n\r\nCon\u00e9ctalo a tu PC o laptop para vincular equipos como celulares, aud\u00edfonos, bocinas, entre otros.\r\n\r\nCARACTERISTICAS:\r\n\r\n\u2022 soporta Windows 7 \/8\/10 Mac os.\r\n\u2022 Dispositivos inal\u00e1mbricos como teclado, mouse, parlantes, auriculares, game pads, impresoras y m\u00e1s.\r\n\u2022 Universal serial USB interface: USB 2.0\/3.0\/4.0\r\n\u2022 Rango de recepci\u00f3n \/ env\u00edo: 20 m.\r\n\u2022 Adaptador USB inal\u00e1mbrico Bluetooth de baja energ\u00eda.\r\n\u2022 Transmisi\u00f3n Bluetooth de modo dual.\r\n\u2022 Soporta trasmisi\u00f3n Bluetooth de voz y datos.",
+        "estado": "Nuevo",
+        "imagen": "d92901ab1fa35e56d9fccdb0728ad2b0-product-removebg-preview.png"
+    },
+    {
+        "IdUSer": 1696111192,
+        "nombre": "ptoducto5",
+        "User":"Platvent",
+        "categoria": "Tecnologia",
+        "precio": "10000000",
+        "tienda": "Platvent",
+        "descripcion": "sadsadsadasdfa fadfafdsaf daf dfadfsa",
+        "estado": "Nuevo",
+        "imagen": "_2f2a0413-138b-4353-a70b-c948a30e59f9-removebg-preview.png"
+    }
+]

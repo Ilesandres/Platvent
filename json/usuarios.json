@@ -1,0 +1,41 @@
+[
+    {
+        "id": 3,
+        "tipoUsuario": "cliente",
+        "email": "sjdksj@gmail.com",
+        "nombre": "Camilo",
+        "celular": "321",
+        "edad": "22",
+        "fechaNacimiento": "2000-11-12",
+        "direccion": "Mocoa",
+        "departamento": "Putumayo",
+        "municipio": "Mocoa",
+        "contrase\u00f1a": "123"
+    },
+    {
+        "id": 4,
+        "tipoUsuario": "admin",
+        "email": "ilessambonibreinerandres@gmail.com",
+        "nombre": "Andres",
+        "celular": "3227349082",
+        "edad": "18",
+        "fechaNacimiento": "2005-07-12",
+        "direccion": "Mocoa",
+        "departamento": "Putumayo",
+        "municipio": "Mocoa",
+        "contrase\u00f1a": "Nuncasapo12"
+    },
+    {
+        "id": 1695916578,
+        "tipoUsuario": "admin",
+        "email": "ilesandres6@gmail.com",
+        "nombre": "Platvent",
+        "celular": "3227349082",
+        "edad": "18",
+        "fechaNacimiento": "2023-05-12",
+        "direccion": "Mocoa",
+        "departamento": "Putumayo",
+        "municipio": "Mocoa",
+        "contrase\u00f1a": "Nuncasapo12"
+    }
+]

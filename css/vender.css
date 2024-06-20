@@ -1,0 +1,34 @@
+
+.scroll-bg{
+
+    width: 90%;
+    margin: 10% auto;
+    
+}
+
+.scroll-div{
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.scroll-object{
+    color: rgb(4, 4, 4);
+    font-family: cursive;
+    font-size: 15px;
+}
+
+.scroll-products{
+width: 100%;
+margin: auto;
+height: 80%;
+}
+
+.products-scroll{
+width:100%;
+height: 80%;
+overflow: hidden;
+overflow-y: scroll;
+
+}
