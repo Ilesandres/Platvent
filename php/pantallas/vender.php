@@ -273,7 +273,7 @@
                                     <a href="/php/pantallas/user.php?id=<?=$datos['id']?>&&img=<?=$datos['img']?>&&page=user" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
+                                    <button onclick="Modal(<?=$datos['id']?>)" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
                                 </td>
                             </tr>
                             <?php
@@ -344,9 +344,16 @@
             <div class="modal-footer">
             
               </div>
+              
+              
+              
+              
             </div>
         </div>
         </div>
+        
+        
+       
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/verifysesionstorage.js"></script>

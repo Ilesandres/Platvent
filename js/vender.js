@@ -261,3 +261,110 @@ function limpiarFactura(){
     NombreCliente.value='';
 
 }
+
+function Modal(id) {
+let factura=document.getElementById('idfactura').value;
+let Idproduct=id;
+if(factura){
+    const modalHTML1 = `
+            <div class="modal fade" id="cantidadproduct" aria-hidden="true" aria-labelledby="AgregarCantidadProduct" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="AgregarCantidad">cantidad</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form">
+                                <form method="POST" class="p-3 border rounded shadow-sm">
+                                    <div class="mb-3">
+                                        <label for="cantidad para el producto" class="form-label">Nombre</label>
+                                        <input type="text" id="cantidadproducto" name="cantidadproducto" class="form-control" placeholder="cantidad">
+                                    </div>
+                                    <button type="button" value="ok" class="btn btn-success" onclick="agregarproducto(`+Idproduct+`)" name="btnagregarcliente">agregar</button>
+                                </form>
+                            </div>
+                            escribe la cantidad que dese del producto
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Append the modal HTML to the body
+        document.body.insertAdjacentHTML('beforeend', modalHTML1);
+        
+        // Initialize and show the modal
+        const modalElement = new bootstrap.Modal(document.getElementById('cantidadproduct'));
+        modalElement.show();
+}else{
+    Swal.fire({
+        title:'error',
+        text:'primero debes crear o seleccionar una factura',
+        icon:'error'
+    })
+
+}
+    
+}
+
+
+
+function agregarproducto(IDproduct){
+
+ 
+    let cantidad = document.getElementById('cantidadproducto').value;
+
+    const modalElement = document.getElementById('cantidadproduct');
+    const bsModal = bootstrap.Modal.getInstance(modalElement);
+
+    if (bsModal) {
+        bsModal.hide();
+    }
+
+    // Espera a que el modal se oculte antes de eliminarlo del DOM
+    modalElement.addEventListener('hidden.bs.modal', function(event) {
+        modalElement.remove();
+    });
+
+
+
+console.log('cantidad : '+cantidad);
+let idFactura=document.getElementById('idfactura').value;
+let productID=IDproduct;
+console.log("agregando producto "+productID);
+
+let formdata= new FormData();
+formdata.append('idProduct',productID);
+formdata.append('idFactura', idFactura);
+
+
+if(idFactura){
+    fetch('/php/controladores/agregarProductoFactura.php',{
+    method:'POST',
+    body: formdata,
+    mode:'cors',
+    }).then(response=>response.json())
+    .then((data)=>{
+        console.log(data);
+        
+        
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+    
+    
+}else{
+Swal.fire({
+    title:'error',
+    text:'primero debes crear o seleccionar una factura',
+    icon:'error'
+})
+}
+
+
+
+}
