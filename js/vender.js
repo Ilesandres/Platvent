@@ -5,16 +5,15 @@ function perfil(){
     }
     
     
-function cerrarBuscar(){
-    window.location.href = window.location.pathname;
-}
+
 
 function registrarCliente() {
-    let nombre = document.getElementById('nombrecliente').value;
+    let nombre = document.getElementById('nameCliente').value;
     let apellido = document.getElementById('apellido').value;
     let identificacion = document.getElementById('identificacion').value;
 
     if (nombre && identificacion) {
+    
         const datos = { nombre, apellido, identificacion };
         console.log(datos)
 
@@ -68,15 +67,22 @@ function registrarCliente() {
     }
 }
 
+
+
 function crearFactura(idCliente, colcId){
 let factura=document.getElementById('idfactura');
 let vendedor=document.getElementById('idvendedor');
 let estadoFactura=document.getElementById('estadofactura').value;
 let idVendedor=sessionStorage.getItem('userclasId');
+let editarFacturaButtom=document.getElementById('editarFacturaAct');
+let imprimirFacturaButtom=document.getElementById('imprimirFactura');
 vendedor.value=idVendedor;
 let EFactura=factura.value;
 let IDCliente=idCliente;
  let colID=colcId;
+ editarFacturaButtom.innerHTML='<button type="button" onclick="modificarFactura('+colcId+')" class="btn btn-primary custom-btn w-100" >editar factura</button>';
+ imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-primary custom-btn w-100" >imprimir factura</button>';
+
 if(!estadoFactura || estadoFactura!=='null'){
     if(!EFactura){
             
@@ -129,30 +135,42 @@ let formdata= new FormData();
 
 
 if(estadoFactura && IDFactura && IdVendedor && IDCliente){
-    formdata.append("idFactura", IDFactura);
-    formdata.append('idVendedor',IdVendedor);
-    formdata.append('id_cliente', IDCliente);
-    formdata.append('estadofactura',estadoFactura);
-    formdata.append('ciNIt',ciNIt);
+    if(estadoFactura!=='null'){
+            formdata.append("idFactura", IDFactura);
+        formdata.append('idVendedor',IdVendedor);
+        formdata.append('id_cliente', IDCliente);
+        formdata.append('estadofactura',estadoFactura);
+        formdata.append('ciNIt',ciNIt);
 
-    
-    fetch('/php/controladores/modificarFacturaID.php',{
-     method: 'POST',
-    body: formdata,
-    mode:'cors'
-    
-    })
-    .then(response=>response.json())
-    .then((data)=>{
-        Swal.fire({
-        title:'factura editada con exito',
-        text: 'añade productos o quita productos de esta factura si lo desesa',
-        icon:'success',
+        
+        fetch('/php/controladores/modificarFacturaID.php',{
+        method: 'POST',
+        body: formdata,
+        mode:'cors'
+        
         })
-    })
-    .catch((err)=>{
-    console.log('ERROR : ',err);
-    })
+        .then(response=>response.json())
+        .then((data)=>{
+            Swal.fire({
+            title:'factura editada con exito',
+            text: 'añade productos o quita productos de esta factura si lo desesa',
+            icon:'success',
+            })
+        })
+        .catch((err)=>{
+        console.log('ERROR : ',err);
+        })
+    
+    }else{
+        Swal.fire({
+        title: 'Error',
+        text: 'No se puede dejar el estado de la factura vacio',
+        icon: 'error',
+        confirmButtonText:'ok',
+        })
+    
+    }
+
 }
 
 }
@@ -248,20 +266,54 @@ document.getElementById('IDcliente').addEventListener('keyup', function(e){
 
 
 function limpiarFactura(){
+
     let estadoFactura=document.getElementById('estadofactura');
     let IDFactura=document.getElementById('idfactura');
     let IdVendedor=document.getElementById('idvendedor');
     let IDCliente= document.getElementById('IDcliente');
     let NombreCliente=document.getElementById('nombrecliente');
+    let totalProducts=document.getElementById('total');
+    const tableProducts=document.getElementById('table-productos-añadidos');
+    let editarFacturaButtom=document.getElementById('editarFacturaAct');
     
-    estadoFactura.value='null';
-    IDFactura.value='';
-    IdVendedor.value='';
-    IDCliente.value='';
-    NombreCliente.value='';
+    if(estadoFactura.value && IdVendedor.value && IDCliente.value && NombreCliente.value){
+        Swal.fire({
+
+            title:'Seguro',
+            text: 'asegurate de haber acabado con esta factura antes de crear una nueva',
+            icon: 'warning',
+            confirmButtonText:'estoy seguro',
+        }).then((resultado)=>{
+            if(resultado.isConfirmed){
+                estadoFactura.value='null';
+                IDFactura.value='';
+                IdVendedor.value='';
+                IDCliente.value='';
+                NombreCliente.value='';
+                totalProducts.value=0;
+                tableProducts.innerHTML='';
+                editarFacturaButtom.innerHTML='';
+            }
+        
+        
+        })
+        
+        
+    }else{
+        Swal.fire({
+
+            title:'tranquil@',
+            text: 'los campos estan vacios puedes crear una factura sin problema alguno',
+            icon: 'info',
+        })
+    }
+    
+    
+   
 
 }
 
+//modal para la cantidad
 function Modal(id) {
 let factura=document.getElementById('idfactura').value;
 let Idproduct=id;
@@ -293,10 +345,9 @@ if(factura){
             </div>
         `;
 
-        // Append the modal HTML to the body
         document.body.insertAdjacentHTML('beforeend', modalHTML1);
         
-        // Initialize and show the modal
+    
         const modalElement = new bootstrap.Modal(document.getElementById('cantidadproduct'));
         modalElement.show();
 }else{
@@ -342,7 +393,7 @@ formdata.append('idFactura', idFactura);
 formdata.append('cantidad',cantidad);
 
 
-if(idFactura){
+if(idFactura && cantidad){
     fetch('/php/controladores/agregarProductoFactura.php',{
     method:'POST',
     body: formdata,
@@ -371,67 +422,149 @@ Swal.fire({
 
 function loadProductosAdd(){
     let idFactura=document.getElementById('idfactura').value;
-    let formdata= new FormData();
-    formdata.append('idFactura', idFactura);
-    fetch('/php/controladores/loadProductosAdd.php',{
-    method:'POST',
-    body: formdata,
-    mode:'cors',
-    }).then(response=>response.json())
-    .then((data)=>{
-        console.log(data);
-        let productos=data.productos;
-        const tableProducts=document.getElementById('table-productos-añadidos');
-        tableProducts.innerHTML='';
-        //console.log(productos)
-        productos.forEach(producto => {
-            const row = document.createElement('tr');
-
-            const imageCell = document.createElement('td');
-            const img = document.createElement('img');
-            img.src = '/img/' + producto.img;
-            img.alt = producto.descripcion;
-            img.style.width = '50px';
-            imageCell.appendChild(img);
-            row.appendChild(imageCell);
-        
-            const nombreCell = document.createElement('td');
-            nombreCell.innerText = producto.descripcion;
-            row.appendChild(nombreCell);
-        
-            const unidadDeMedidaCell = document.createElement('td');
-            // Asumiendo que el producto tiene una propiedad 'unidadDeMedida'
-            unidadDeMedidaCell.innerText = producto.unidadDeMedida || 'N/A';
-            row.appendChild(unidadDeMedidaCell);
-        
-            const cantidadCell = document.createElement('td');
-            cantidadCell.innerText = producto.cantidad;
-            row.appendChild(cantidadCell);
-        
-            const precioBaseCell = document.createElement('td');
-            precioBaseCell.innerText = producto.precioBase;
-            row.appendChild(precioBaseCell);
-        
-            const estadoCell = document.createElement('td');
-            // Asumiendo que el producto tiene una propiedad 'estado'
-            estadoCell.innerText = producto.estado || 'N/A';
-            row.appendChild(estadoCell);
-        
-            const accionesCell = document.createElement('td');
-            // Agrega los botones o enlaces necesarios para las acciones
-            accionesCell.innerHTML = '<button>Editar</button>';
-            row.appendChild(accionesCell);
-        
-            const quitarCell = document.createElement('td');
-            // Agrega los botones o enlaces necesarios para quitar el producto
-            quitarCell.innerHTML = '<button>Eliminar</button>';
-            row.appendChild(quitarCell);
-        
-            tableProducts.appendChild(row);
+    if(idFactura){
+        let formdata= new FormData();
+        formdata.append('idFactura', idFactura);
+        fetch('/php/controladores/loadProductosAdd.php',{
+            method:'POST',
+            body: formdata,
+            mode:'cors',
+        }).then(response=>response.json())
+        .then((data)=>{
+            console.log(data);
+            let productos=data.productos;
+            const tableProducts=document.getElementById('table-productos-añadidos');
+            let totalProducts=document.getElementById('total');
+            let total=0;
+            tableProducts.innerHTML='';
             
-        });
+           
+            productos.forEach(producto => {
+                 total+=producto.precioBase*producto.cantidad;
+                const row = document.createElement('tr');
+
+                const imageCell = document.createElement('td');
+                const img = document.createElement('img');
+                img.src = '/img/' + producto.img;
+                img.alt = producto.descripcion;
+                img.style.width = '50px';
+                imageCell.appendChild(img);
+                row.appendChild(imageCell);
+            
+                const nombreCell = document.createElement('td');
+                nombreCell.innerText = producto.descripcion;
+                row.appendChild(nombreCell);
+            
+                const unidadDeMedidaCell = document.createElement('td');
+                unidadDeMedidaCell.innerText = producto.unidadMedida || 'N/A';
+                row.appendChild(unidadDeMedidaCell);
+            
+                const cantidadCell = document.createElement('td');
+                cantidadCell.innerText = producto.cantidad;
+                row.appendChild(cantidadCell);
+            
+                const precioBaseCell = document.createElement('td');
+                precioBaseCell.innerText = producto.precioBase;
+                row.appendChild(precioBaseCell);
+            
+                const estadoCell = document.createElement('td');
+                estadoCell.innerText = producto.estado || 'N/A';
+                row.appendChild(estadoCell);
+            
+                const accionesCell = document.createElement('td');
+                accionesCell.innerHTML = '<button class="btn btn-warning no-print"><i class="fa-solid fa-pen-to-square"></i></button>';
+                row.appendChild(accionesCell);
+            
+                const quitarCell = document.createElement('td');
+                quitarCell.innerHTML = '<button class="btn btn-danger no-print">Eliminar</button>';
+                row.appendChild(quitarCell);
+            
+                tableProducts.appendChild(row);
+                
+            });
+            totalProducts.value=total;
+        })
+        .catch((err)=>{
+        console.log(err);
+        })
+    }
+   
+}
+
+//buscar productos en ventas
+document.getElementById('searchInput').addEventListener('keyup',function(e){
+    let valorSearch=document.getElementById('searchInput').value;
+    let showProducts=document.getElementById('listProducts');
+    let formdata= new FormData();
+    formdata.append('search',valorSearch);
+    console.log(valorSearch);
+    if(valorSearch){
+        fetch('/php/controladores/buscarproductoName.php',{
+            
+            method:'POST',
+            body:formdata,
+            mode:'cors'
+        }).then(response=>response.json())
+        .then((data) => {
+        console.log(data);
+        showProducts.innerHTML='';
+            data.products.forEach(producto => {
+                 const row = document.createElement('tr');
+
+                const imageCell = document.createElement('td');
+                const img = document.createElement('img');
+                img.src = '/img/' + producto.img;
+                img.alt = producto.descripcion;
+                img.style.width = '50px';
+                imageCell.appendChild(img);
+                row.appendChild(imageCell);
+            
+                const nombreCell = document.createElement('td');
+                nombreCell.innerText = producto.descripcion;
+                row.appendChild(nombreCell);
+            
+                const precioBaseCell = document.createElement('td');
+                precioBaseCell.innerText = producto.precioBase;
+                row.appendChild(precioBaseCell);
+            
+                const accionesCell = document.createElement('td');
+                accionesCell.innerHTML = '<button type="button" onclick="Modal('+producto.id+')" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button> ' ;
+                row.appendChild(accionesCell);
+            
+                const quitarCell = document.createElement('td');
+                quitarCell.innerHTML = '<button>Eliminar</button>';
+                row.appendChild(quitarCell);
+            
+                showProducts.appendChild(row);
+                
+            });
+            
+        })
+        .catch((err)=>{console.log('ERROR'+err)});
+        
+    }
+    
+   
+
+});
+
+function imrpimirFactura(){
+let factura=document.getElementById('idfactura').value;
+console.log(factura);
+if(factura){
+    print();
+}else{
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se ha seleccionado una factura',
     })
-    .catch((err)=>{
-    console.log(err);
-    })
+}
+
+}
+
+function verFacturas(){
+    
+    
+
 }

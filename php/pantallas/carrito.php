@@ -34,7 +34,6 @@
 
     </section>
 
-    <!-- /////////// Start ////////// -->
     <section class="pt-5 pb-2">
         <div class="container">
             <div class="row no-gutters shadow-box">
@@ -53,7 +52,7 @@
                     </div>
                     <!-- </div> -->
                 </div>
-                <!-- ///// End of part //// -->
+
 
                 <div class="col-lg-9 col-12">
                     <div class="row d-flex">
@@ -175,7 +174,7 @@
                     </div>
                     <!-- </div> -->
                 </div>
-                <!-- ///// End of part //// -->
+       
 
                 <div class="col-lg-9 col-12">
                     <div class="row d-flex">

@@ -24,9 +24,8 @@
 <header class="text-center py-3">
         <h1 class="text-center text-secondary font-weight-bold ">Ventas</h1>
     </header>
-    <nav class="text-center my-3">
+    <nav class="text-center my-3 no-print">
         <button class="btn btn-primary mx-2" title="inicio" onclick="window.location='/index.php'"><i class="fa-solid fa-house"></i></button>
-        <a class="btn btn-primary" data-bs-toggle="modal" title="buscar" href="#exampleModalToggle" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
         <buttom class="btn btn-primary mx-2 " title="perfil" onclick="perfil()"><i class="fa-solid fa-house-user"></i></buttom>
         <button class="btn btn-primary mx-2" title="seccion productos" onclick="window.location.href='/php/pantallas/user.php'"><i class="fa-solid fa-house-flag"></i></button>
         <buttom class="btn btn-primary mx-2 " ></buttom>
@@ -38,7 +37,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalToggleLabel">Buscar producto</h5>
-                <button type="button" class="btn-close" onclick="cerrarBuscar()" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
             <div class="modal-body">
@@ -48,10 +47,19 @@
                 
                 
                  <div class="mb-3">
-                    <label for="search" class="form-label">Descripción o Nombre</label>
-                    <input type="text" id="search" name="search" class="form-control"
+                    <label for="searchInput" class="form-label">Descripción o Nombre</label>
+                    <input type="text" id="searchInput" name="searchInput" class="form-control"
                         placeholder="Descripción o nombre">
                 </div>
+                <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+                        <table class="table table-striped">
+                        <ul id="listProducts" > </ul>
+                        </table>
+                        
+                        </div></div></div>
+                
                 <button type="button" class="btn btn-primary" onclick="SearchProduct()" name="btnBuscar" >search</button>                
             </form>
                 
@@ -76,8 +84,8 @@
         <form method="POST" class="col-5 p-3 border rounded shadow-sm container-fluid row">
         
         <div class="col-5">
-            <legend class="text-center">Compra</legend>
-                <p>las facturas se agregan y editan automaticamente si tienes datos en ella, procura dar click en factura nueva para limpiar todos los valores</p>
+            <legend class="text-center">Factura</legend>
+                <p class="no-print">las facturas se agregan y editan automaticamente si tienes datos en ella, procura dar click en factura nueva para limpiar todos los valores</p>
             
                 <div class="mb-3">
                     <label for="idFactura" class="form-label">id Factura </label>
@@ -154,41 +162,49 @@
                 
                 
                 <div class="mb-3">
-                <button type="button" onclick="limpiarFactura()" class="btn btn-success">nueva factura</button>
+                <button type="button" onclick="limpiarFactura()" class="btn btn-success no-print">nueva factura</button>
                  
                 </div>
                 
 
                 
         </div>
-        <div class="col-4  container container-fluid ">
-        
-             <legend class="text-center"> acciones</legend>
-            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                <div class="col m-4 p-2">
-                <button class="btn btn-primary  m-1 ">ver facturas</button>
-                </div>
-                <div class="col m-4 p-2">
-                <button class="btn btn-primary  m-1 ">eliminar facturas</button>
-                </div>
-                <div class="col m-4 p-2">
-                    <a class="btn btn-primary" data-bs-toggle="modal" title="agregar cliente" href="#AgregarCliente" role="button"><i class="fa-regular fa-address-card"></i></a>
-
-                
-                </div>
-                <div class="col m-4 p-2">
-                     <button class="btn btn-primary">agregar Cliente</button>
-                </div>
-                <div class="col m-4 p-2">
-                                 <button class="btn btn-primary" onclick="window.location.href='#AgregarCliente'">acciones</button>
-
-                </div>
-                
-               
-            </div>
-
-           
+        <div class="container col-12 col-md-8 col-lg-6 mt-4 no-print">
+    <legend class="text-center mb-4">Acciones</legend>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+            <button type="button" class="btn btn-primary custom-btn w-100">Ver Facturas</button>
         </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger custom-btn w-100">Eliminar Facturas</button>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary custom-btn w-100" data-bs-toggle="modal" title="Agregar Cliente" href="#AgregarCliente" role="button">
+                <i class="fa-regular fa-address-card"></i> Agregar Cliente
+            </a>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-success custom-btn w-100">Agregar Cliente</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-info custom-btn w-100" onclick="window.location.href='#AgregarCliente'">Acciones</button>
+        </div>
+        <div class="col" id="editarFacturaAct">
+            
+        </div>
+        <div class="col" id="imprimirFactura">
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>
+
         <legend class="text-center">Productos añadidos</legend>
                 
                 <div class="scroll-bg">
@@ -215,7 +231,6 @@
                          </table>
                         
         
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non quidem illo modi enim rerum maxime sequi eaque consectetur quo ipsum officia soluta culpa adipisci asperiores ullam ipsam ratione totam, molestiae nam minima expedita doloribus temporibus itaque quam? Suscipit pariatur a delectus ipsa, totam doloremque, voluptas nostrum excepturi odit ipsum modi repellat deserunt dolorum. Ad blanditiis excepturi voluptatum minus eos! Fugit, illo! Mollitia id temporibus beatae neque iusto incidunt corrupti officia tenetur labore consequatur dolor, asperiores accusamus, rem quas et, vel voluptate error ad unde nobis tempore vero esse! Deleniti ex illo praesentium rem itaque consectetur placeat blanditiis magnam veritatis perferendis impedit ea quis nulla ut voluptate laboriosam, nihil maiores animi a. Nesciunt eaque dignissimos, fuga excepturi ipsam itaque dolore in? Necessitatibus recusandae qui sed tempora quae illum ut assumenda deleniti, earum nostrum atque nemo? At voluptate assumenda, odio perferendis, nihil eligendi ducimus iure incidunt delectus, sit id quas sapiente! Laboriosam aspernatur eius maiores quasi necessitatibus quisquam quidem voluptate perspiciatis deleniti quod ipsa dolores hic unde repellendus, dignissimos in blanditiis tempora doloremque. Cum accusamus enim sapiente, animi eveniet pariatur molestias exercitationem voluptatibus amet ratione nihil eius a repudiandae odio aut unde cupiditate fuga quia! Veniam ipsam placeat delectus tempora, inventore quasi esse asperiores magni unde, dolores voluptatibus mollitia nobis, ullam animi temporibus? Laudantium odio incidunt ut necessitatibus aperiam molestiae quisquam ratione consectetur voluptates similique ipsam ab tempore, corporis vitae omnis deserunt! Temporibus voluptates rerum, animi obcaecati natus sunt consequatur ut consequuntur sint quae nulla perferendis, delectus error consectetur. Fuga, fugit non.
                         
                         </div>
                     </div>
@@ -224,12 +239,14 @@
         
            
         </form>        
-             <div class="col-7">
+             <div class="col-7 no-print">
         <div class="scroll-products">
             <div class="products-scroll">
                 <div class="products-object">
              
         <legend class="text-center">Productos disponibles</legend>
+        <a class="btn btn-light d-flex justify-content-center" data-bs-toggle="modal" title="buscar" href="#exampleModalToggle" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
+
         <table class="table table-striped table-hover table-bordered">
                 <thead class="bg-primary text-white">
                     <tr>
@@ -319,8 +336,8 @@
                 
                 
                  <div class="mb-3">
-                    <label for="nombrecliente" class="form-label">Nombre</label>
-                    <input type="text" id="nombrecliente" name="nombrecliente" class="form-control"
+                    <label for="nameCliente" class="form-label">Nombre</label>
+                    <input type="text" id="nameCliente" name="nameCliente" class="form-control"
                         placeholder="nombre">
                 </div>
                  <div class="mb-3">

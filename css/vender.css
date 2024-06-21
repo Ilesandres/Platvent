@@ -1,9 +1,58 @@
+.custom-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    white-space: normal; /* Permitir que el texto se ajuste en varias líneas si es necesario */
+    height: 100px; /* Ajustar la altura del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media print{
+    .custom-btn{
+        display: none;
+    }
+    .no-print{
+        display: none;
+    }
+    *{
+        width: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 12pt; /* Ajusta el tamaño de fuente para impresión */
+    }
+    .container, .container-fluid, .row, .col {
+        width: 100%;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        
+    }
+    table, th, td {
+        border: 1px solid black; /* Asegura que las tablas tengan bordes visibles al imprimir */
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    .form-label, .form-control {
+        display: block;
+        width: 100%;
+    }
+}
+
 
 .scroll-bg{
 
     width: 105%;
+    height: 75%;
     margin: 10% auto;
     transform: translateX(-2%);
+    
     
 }
 
