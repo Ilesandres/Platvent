@@ -5,9 +5,10 @@ require_once '/platvent_2/php/controladores/config.php';
 
 $conn =conectarDB();
 
-if (!empty($_POST['idProduct']) && !empty($_POST['idFactura'])) {
+if (!empty($_POST['idProduct']) && !empty($_POST['idFactura']) && !empty($_POST['cantidad'])) {
     $idProduct = $_POST['idProduct'];
     $idFactura = $_POST['idFactura'];
+    $cantidadPro= $_POST['cantidad'];
 
     // Consulta para obtener detalles del producto
     $producto = "SELECT * FROM producto WHERE id='$idProduct'";
@@ -17,15 +18,17 @@ if (!empty($_POST['idProduct']) && !empty($_POST['idFactura'])) {
         $productoData = $productoRes->fetch_assoc();
         $precioBase = $productoData['precioBase'];
 
-        // Inserción de detalles de la venta
-        #$sql = "INSERT INTO detalles (idVenta, idProducto, cantidad) VALUES ('$idFactura', '$idProduct', 1)";
-        $sqlRes=true;
+    
+        $sql = "INSERT INTO detalles (idVenta, idProducto, cantidad, precioUnitario) VALUES ('$idFactura', '$idProduct', '$cantidadPro','$precioBase')";
+      
+        $sqlRes=$conn->query($sql);
         
         if ($sqlRes) {
             $response = array(
-                'message' => 'success',
+                'message' => 'producta añadido',
                 'idProduct' => $idProduct,
                 'precio' => $precioBase,
+                'cantidad '=>$cantidadPro,
             );
         } else {
             $response = array(

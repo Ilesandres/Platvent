@@ -313,8 +313,8 @@ if(factura){
 
 
 function agregarproducto(IDproduct){
-
  
+    
     let cantidad = document.getElementById('cantidadproducto').value;
 
     const modalElement = document.getElementById('cantidadproduct');
@@ -339,6 +339,7 @@ console.log("agregando producto "+productID);
 let formdata= new FormData();
 formdata.append('idProduct',productID);
 formdata.append('idFactura', idFactura);
+formdata.append('cantidad',cantidad);
 
 
 if(idFactura){
@@ -348,8 +349,7 @@ if(idFactura){
     mode:'cors',
     }).then(response=>response.json())
     .then((data)=>{
-        console.log(data);
-        
+        loadProductosAdd();
         
     })
     .catch((err)=>{
@@ -367,4 +367,71 @@ Swal.fire({
 
 
 
+}
+
+function loadProductosAdd(){
+    let idFactura=document.getElementById('idfactura').value;
+    let formdata= new FormData();
+    formdata.append('idFactura', idFactura);
+    fetch('/php/controladores/loadProductosAdd.php',{
+    method:'POST',
+    body: formdata,
+    mode:'cors',
+    }).then(response=>response.json())
+    .then((data)=>{
+        console.log(data);
+        let productos=data.productos;
+        const tableProducts=document.getElementById('table-productos-añadidos');
+        tableProducts.innerHTML='';
+        //console.log(productos)
+        productos.forEach(producto => {
+            const row = document.createElement('tr');
+
+            const imageCell = document.createElement('td');
+            const img = document.createElement('img');
+            img.src = '/img/' + producto.img;
+            img.alt = producto.descripcion;
+            img.style.width = '50px';
+            imageCell.appendChild(img);
+            row.appendChild(imageCell);
+        
+            const nombreCell = document.createElement('td');
+            nombreCell.innerText = producto.descripcion;
+            row.appendChild(nombreCell);
+        
+            const unidadDeMedidaCell = document.createElement('td');
+            // Asumiendo que el producto tiene una propiedad 'unidadDeMedida'
+            unidadDeMedidaCell.innerText = producto.unidadDeMedida || 'N/A';
+            row.appendChild(unidadDeMedidaCell);
+        
+            const cantidadCell = document.createElement('td');
+            cantidadCell.innerText = producto.cantidad;
+            row.appendChild(cantidadCell);
+        
+            const precioBaseCell = document.createElement('td');
+            precioBaseCell.innerText = producto.precioBase;
+            row.appendChild(precioBaseCell);
+        
+            const estadoCell = document.createElement('td');
+            // Asumiendo que el producto tiene una propiedad 'estado'
+            estadoCell.innerText = producto.estado || 'N/A';
+            row.appendChild(estadoCell);
+        
+            const accionesCell = document.createElement('td');
+            // Agrega los botones o enlaces necesarios para las acciones
+            accionesCell.innerHTML = '<button>Editar</button>';
+            row.appendChild(accionesCell);
+        
+            const quitarCell = document.createElement('td');
+            // Agrega los botones o enlaces necesarios para quitar el producto
+            quitarCell.innerHTML = '<button>Eliminar</button>';
+            row.appendChild(quitarCell);
+        
+            tableProducts.appendChild(row);
+            
+        });
+    })
+    .catch((err)=>{
+    console.log(err);
+    })
 }

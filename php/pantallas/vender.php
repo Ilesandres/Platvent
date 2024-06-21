@@ -148,8 +148,8 @@
                         placeholder=" nombre cliente" readonly>
                         <br>
                         <label for="total" class="form-label"> total</label>
-                    <input type="text" id="total" name="total" class="form-control"
-                        placeholder=" total" value="0" readonly>
+                    <input type="int" id="total" name="total" class="form-control"
+                        placeholder=" total" value="0" step="any" readonly>
                 </div>
                 
                 
@@ -208,11 +208,13 @@
                             </tr>
                                  
                             </thead>
-                            <tbody>
+                            <tbody id="table-productos-añadidos" >
+                            
                                 
                             </tbody>
                          </table>
                         
+        
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non quidem illo modi enim rerum maxime sequi eaque consectetur quo ipsum officia soluta culpa adipisci asperiores ullam ipsam ratione totam, molestiae nam minima expedita doloribus temporibus itaque quam? Suscipit pariatur a delectus ipsa, totam doloremque, voluptas nostrum excepturi odit ipsum modi repellat deserunt dolorum. Ad blanditiis excepturi voluptatum minus eos! Fugit, illo! Mollitia id temporibus beatae neque iusto incidunt corrupti officia tenetur labore consequatur dolor, asperiores accusamus, rem quas et, vel voluptate error ad unde nobis tempore vero esse! Deleniti ex illo praesentium rem itaque consectetur placeat blanditiis magnam veritatis perferendis impedit ea quis nulla ut voluptate laboriosam, nihil maiores animi a. Nesciunt eaque dignissimos, fuga excepturi ipsam itaque dolore in? Necessitatibus recusandae qui sed tempora quae illum ut assumenda deleniti, earum nostrum atque nemo? At voluptate assumenda, odio perferendis, nihil eligendi ducimus iure incidunt delectus, sit id quas sapiente! Laboriosam aspernatur eius maiores quasi necessitatibus quisquam quidem voluptate perspiciatis deleniti quod ipsa dolores hic unde repellendus, dignissimos in blanditiis tempora doloremque. Cum accusamus enim sapiente, animi eveniet pariatur molestias exercitationem voluptatibus amet ratione nihil eius a repudiandae odio aut unde cupiditate fuga quia! Veniam ipsam placeat delectus tempora, inventore quasi esse asperiores magni unde, dolores voluptatibus mollitia nobis, ullam animi temporibus? Laudantium odio incidunt ut necessitatibus aperiam molestiae quisquam ratione consectetur voluptates similique ipsam ab tempore, corporis vitae omnis deserunt! Temporibus voluptates rerum, animi obcaecati natus sunt consequatur ut consequuntur sint quae nulla perferendis, delectus error consectetur. Fuga, fugit non.
                         
                         </div>
