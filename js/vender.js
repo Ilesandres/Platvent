@@ -69,6 +69,7 @@ function registrarCliente() {
 
 
 
+
 function crearFactura(idCliente, colcId){
 let factura=document.getElementById('idfactura');
 let vendedor=document.getElementById('idvendedor');
@@ -79,8 +80,10 @@ let imprimirFacturaButtom=document.getElementById('imprimirFactura');
 vendedor.value=idVendedor;
 let EFactura=factura.value;
 let IDCliente=idCliente;
+    imprimirFacturaButtom.innerHTML='';
+    editarFacturaButtom.innerHTML='';
  let colID=colcId;
- editarFacturaButtom.innerHTML='<button type="button" onclick="modificarFactura('+colcId+')" class="btn btn-primary custom-btn w-100" >editar factura</button>';
+ editarFacturaButtom.innerHTML='<button type="button" onclick="modificarFactura('+colcId+')" class="btn btn-success custom-btn w-100" >editar factura</button>';
  imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-primary custom-btn w-100" >imprimir factura</button>';
 
 if(!estadoFactura || estadoFactura!=='null'){
@@ -275,6 +278,7 @@ function limpiarFactura(){
     let totalProducts=document.getElementById('total');
     const tableProducts=document.getElementById('table-productos-añadidos');
     let editarFacturaButtom=document.getElementById('editarFacturaAct');
+    let imprimirFacturaButtom=document.getElementById('imprimirFactura');
     
     if(estadoFactura.value && IdVendedor.value && IDCliente.value && NombreCliente.value){
         Swal.fire({
@@ -293,6 +297,7 @@ function limpiarFactura(){
                 totalProducts.value=0;
                 tableProducts.innerHTML='';
                 editarFacturaButtom.innerHTML='';
+                imprimirFacturaButtom.innerHTML='';
             }
         
         
@@ -420,6 +425,29 @@ Swal.fire({
 
 }
 
+
+function agregarTotalFact(idFact,total){
+let Idfactura=idFact;
+let Total=total;
+let formdata=new FormData();
+formdata.append('idFactura',Idfactura);
+formdata.append('total',Total);
+
+    fetch('/php/controladores/agregarTotalFactID.php',{
+        method:'POST',
+        body:formdata,
+        mode:'cors',
+    }).then(response=>response.json())
+    .then((factura)=>{
+        console.log(factura);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+
+}
+
+
 function loadProductosAdd(){
     let idFactura=document.getElementById('idfactura').value;
     if(idFactura){
@@ -483,6 +511,8 @@ function loadProductosAdd(){
                 
             });
             totalProducts.value=total;
+            agregarTotalFact(idFactura,total);
+            
         })
         .catch((err)=>{
         console.log(err);
@@ -563,8 +593,56 @@ if(factura){
 
 }
 
-function verFacturas(){
+function verFactura(Id){
+    let idVenta=Id;
+    if(idVenta){
+        let inputID=document.getElementById('idfactura');
+        inputID.value=idVenta;
+        let editarFacturaButtom=document.getElementById('editarFacturaAct');
+        let imprimirFacturaButtom=document.getElementById('imprimirFactura');
+        imprimirFacturaButtom.innerHTML='';
+        editarFacturaButtom.innerHTML='';
+        editarFacturaButtom.innerHTML='<button type="button" onclick="modificarFactura('+idVenta+')" class="btn btn-success custom-btn w-100" >editar factura</button>';
+        imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-primary custom-btn w-100" >imprimir factura</button>';
+        
+        cargarDatosFactura();
+    }
     
     
-
 }
+
+function cargarDatosFactura(){
+    let idFactura=document.getElementById('idfactura').value;
+    let idVendedor=sessionStorage.getItem('user');
+    let vendedor=document.getElementById('idvendedor');
+    let estadoFactura=document.getElementById('estadofactura');
+    let totaltemp=document.getElementById('estadofactura');
+    let cliente=document.getElementById('IDcliente');
+    let clienteNombre=document.getElementById('nombrecliente');
+    let formdata =new FormData();
+    formdata.append('idFactura',idFactura);
+    console.log(idFactura);
+    
+    fetch('/php/controladores/loadFactura.php',{
+        method:'POST',
+        body:formdata,
+        mode:'cors',
+        
+        }).then(response=>response.json())
+        .then((data)=>{
+            console.log(data);
+                let facturas=data.factura;
+                
+                facturas.forEach(factura => {
+                    vendedor.value=idVendedor;
+                    cliente.value=factura.ciNit;
+                    clienteNombre.value=factura.ciNit+'-'+factura.nombre+' '+factura.apellido;
+                    totaltemp.value=factura.total;
+                    estadoFactura.selectedIndex  =factura.estado;
+                    loadProductosAdd();
+                });
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+};

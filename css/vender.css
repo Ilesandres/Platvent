@@ -90,3 +90,25 @@ ul{
     background-color: blanchedalmond;
  }
 }
+
+
+
+
+.ShowFacturasdiv {
+    width: 100%;
+    height: 70%;
+    margin: 10% auto;
+    overflow-y: auto; /* Añade scroll vertical cuando sea necesario */
+    transform: translateX(2%);
+}
+
+.Facturas {
+    width: 100%;
+    height: 100%; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto; /* Habilita scroll vertical dentro de este div */
+}
+
+.Facturas table {
+    width: 90%;
+    /* No es necesario transform: translateX(10%); aquí */
+}

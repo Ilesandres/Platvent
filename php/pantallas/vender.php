@@ -173,7 +173,8 @@
     <legend class="text-center mb-4">Acciones</legend>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
         <div class="col">
-            <button type="button" class="btn btn-primary custom-btn w-100">Ver Facturas</button>
+        <a class="btn btn-primary custom-btn w-100" data-bs-toggle="modal" title="ver_Facturas" href="#VerFacturas" role="button">
+        <i></i>ver facturas </a>
         </div>
         <div class="col">
             <button type="button" class="btn btn-danger custom-btn w-100">Eliminar Facturas</button>
@@ -183,17 +184,16 @@
                 <i class="fa-regular fa-address-card"></i> Agregar Cliente
             </a>
         </div>
+        
         <div class="col">
-            <button type="button" class="btn btn-success custom-btn w-100">Agregar Cliente</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-info custom-btn w-100" onclick="window.location.href='#AgregarCliente'">Acciones</button>
+            <button class="btn btn-info custom-btn w-100" href="#VerFacturas">Acciones</button>
         </div>
         <div class="col" id="editarFacturaAct">
             
         </div>
         <div class="col" id="imprimirFactura">
         </div>
+        <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
@@ -372,7 +372,84 @@
         </div>
         
         
-       
+        <div class="modal fade containerModal" id="VerFacturas" aria-hidden="true" aria-labelledby="verFacturaLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl subcontainerModal">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="verFacturaLabel">Ver facturas</h5>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+            <div class="ShowFacturasdiv">
+                <div class="Facturs">
+                    <div class="Facturas">
+                    <table class="table table-striped table-hover table-bordered">
+                    
+                    <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">ID</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">fecha de compra</th>
+                    <th scope="col">editar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            require_once '/platvent_2/php/controladores/config.php';
+                            
+                            $conn=conectarDB();
+                            $sql="SELECT * FROM venta";
+                            $resultFact=$conn->query($sql);
+                            if($resultFact->num_rows>0){
+                                while($factura=$resultFact->fetch_assoc()){
+                                
+                                ?>
+                                
+                                    <tr>
+                                        <td><?=$factura['id']?></td>
+                                        <td><?=$factura['idCliente']?></td>
+                                        <td><?=$factura['total']?></td>
+                                        <td><?=$factura['fechaRegistro']?></td>
+                                        <td><button  class="btn btn-warning" onclick="verFactura(<?=$factura['id']?>)"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                                        
+                                    </tr>
+                                
+                                <?php
+                                
+                                }
+                            }
+                        
+                        ?>
+                        
+                        
+                    </tbody>
+                    
+                    
+                  
+                    </table>
+                    
+                    </div>
+                </div>
+            
+            
+                
+            
+            </div>
+                escribe los datos del nuevo cliente
+               
+            </div>
+            <div class="modal-footer">
+            
+              </div>
+              
+              
+              
+              
+            </div>
+        </div>
+        </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/verifysesionstorage.js"></script>
