@@ -1,6 +1,6 @@
 <?php 
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once 'php/controladores/config.php';
 
 $conn=conectarDB();
 

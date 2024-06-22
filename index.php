@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css//index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
@@ -16,10 +16,10 @@
     </div>
     <nav>
         <ul>
-            <li><a href="/php/pantallas/login.php">login</a></li>
+            <li><a href="php/pantallas/login.php">login</a></li>
             <li><a href="">acerca de</a></li>
             <li><a href="">contactanos</a></li>
-            <li><a href="/php/pantallas/carrito.php">carrito</a></li>
+            <li><a href="php/pantallas/carrito.php">carrito</a></li>
            
      
                 <li class="search"><input name="search" id="search" type="search" required>
@@ -39,7 +39,7 @@
     
     
         <?php
-        require_once '/platvent_2/php/controladores/config.php';
+        require_once 'php/controladores/config.php';
 
         $conn = conectarDB();
 

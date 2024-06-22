@@ -1,8 +1,3 @@
-drop database bdventa;
-
-CREATE DATABASE  IF NOT EXISTS `bdventa`;
-USE `bdventa`;
-
 
 
 
@@ -31,7 +26,6 @@ CREATE TABLE `cliente` (
   `ciNit` varchar(15) NOT NULL,
   nombre varchar(50)  not null default 'cam',
   `apellido` varchar(50) NOT NULL,
-  `razonSocial` varchar(50) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `fechaRegistro` timestamp NOT NULL DEFAULT current_timestamp(),
   `fechaActualizacion` timestamp NULL DEFAULT NULL,
