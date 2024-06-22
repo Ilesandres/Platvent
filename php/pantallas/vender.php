@@ -259,7 +259,6 @@
                         <th scope="col">Saldo</th>
                         <th scope="col">Precio Base</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Acciones</th>
                         <th scope="col">añadir</th>
                     </tr>
                 </thead>
@@ -287,10 +286,6 @@
                                 <td><?= $datos['saldo'] ?></td>
                                 <td><?= $datos['precioBase'] ?></td>
                                 <td><?= $datos['estado'] ?></td>
-                                <td class="text-center">
-                                    <a href="/php/pantallas/modifyProduct.php?id=<?=$datos['id']?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="/php/pantallas/user.php?id=<?=$datos['id']?>&&img=<?=$datos['img']?>&&page=user" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
-                                </td>
                                 <td class="text-center">
                                     <button onclick="Modal(<?=$datos['id']?>)" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
                                 </td>

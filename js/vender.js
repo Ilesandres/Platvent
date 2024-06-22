@@ -127,56 +127,72 @@ if(!estadoFactura || estadoFactura!=='null'){
 }
 
 
-function modificarFactura(ClienteID){
+function modificarFactura(ClienteID) {
+    let estadoFactura = document.getElementById('estadofactura').value;
+    let IDFactura = document.getElementById('idfactura').value;
+    let IDCliente = ClienteID;
+    let IdVendedor = document.getElementById('idvendedor').value;
+    let ciNIt = document.getElementById('IDcliente').value;
+    let total = document.getElementById('total').value;
 
-let estadoFactura=document.getElementById('estadofactura').value;
-let IDFactura=document.getElementById('idfactura').value;
-let IDCliente=ClienteID;
-let IdVendedor=document.getElementById('idvendedor').value;
-let ciNIt= document.getElementById('IDcliente').value;
-let formdata= new FormData();
 
-
-if(estadoFactura && IDFactura && IdVendedor && IDCliente){
-    if(estadoFactura!=='null'){
-            formdata.append("idFactura", IDFactura);
-        formdata.append('idVendedor',IdVendedor);
-        formdata.append('id_cliente', IDCliente);
-        formdata.append('estadofactura',estadoFactura);
-        formdata.append('ciNIt',ciNIt);
-
-        
-        fetch('/php/controladores/modificarFacturaID.php',{
-        method: 'POST',
-        body: formdata,
-        mode:'cors'
-        
-        })
-        .then(response=>response.json())
-        .then((data)=>{
-            Swal.fire({
-            title:'factura editada con exito',
-            text: 'añade productos o quita productos de esta factura si lo desesa',
-            icon:'success',
-            })
-        })
-        .catch((err)=>{
-        console.log('ERROR : ',err);
-        })
-    
-    }else{
+    if (!estadoFactura || !IDFactura || !IdVendedor || !IDCliente) {
         Swal.fire({
-        title: 'Error',
-        text: 'No se puede dejar el estado de la factura vacio',
-        icon: 'error',
-        confirmButtonText:'ok',
-        })
-    
+            title: 'Error',
+            text: 'Por favor, completa todos los campos requeridos.',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+        });
+        return;
     }
 
+    if (estadoFactura === 'null') {
+        Swal.fire({
+            title: 'Error',
+            text: 'No se puede dejar el estado de la factura vacío.',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+        });
+        return;
+    }
+
+    let formdata = new FormData();
+    formdata.append("idFactura", IDFactura);
+    formdata.append('idVendedor', IdVendedor);
+    formdata.append('id_cliente', IDCliente);
+    formdata.append('estadofactura', estadoFactura);
+    formdata.append('ciNIt', ciNIt);
+    formdata.append('total', total);
+
+
+    fetch('/php/controladores/modificarFacturaID.php', {
+        method: 'POST',
+        body: formdata,
+        mode: 'cors'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        return response.json();
+    })
+    .then(data => {
+        Swal.fire({
+            title: 'Factura editada con éxito',
+            text: 'Añade productos o quita productos de esta factura si lo deseas.',
+            icon: 'success',
+        });
+    })
+    .catch(err => {
+        Swal.fire({
+            title: 'Error',
+            text: 'Hubo un problema al editar la factura. Por favor, inténtalo nuevamente, puede que los valores de la factura sean iguales, recuerda que los productos al modificarlos se actualizan automaticamente',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+        });
+    });
 }
 
-}
 
 
 function añadirID(id){
@@ -500,11 +516,11 @@ function loadProductosAdd(){
                 row.appendChild(estadoCell);
             
                 const accionesCell = document.createElement('td');
-                accionesCell.innerHTML = '<button class="btn btn-warning no-print"><i class="fa-solid fa-pen-to-square"></i></button>';
+                accionesCell.innerHTML = '<button type="button" class="btn btn-warning no-print"><i class="fa-solid fa-pen-to-square"></i></button>';
                 row.appendChild(accionesCell);
             
                 const quitarCell = document.createElement('td');
-                quitarCell.innerHTML = '<button class="btn btn-danger no-print">Eliminar</button>';
+                quitarCell.innerHTML = '<button type="button" class="btn btn-danger no-print">Eliminar</button>';
                 row.appendChild(quitarCell);
             
                 tableProducts.appendChild(row);
@@ -630,7 +646,6 @@ function cargarDatosFactura(){
         
         }).then(response=>response.json())
         .then((data)=>{
-            console.log(data);
                 let facturas=data.factura;
                 
                 facturas.forEach(factura => {

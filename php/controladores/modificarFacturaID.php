@@ -14,10 +14,9 @@ if(!empty($_POST['idFactura']) && !empty($_POST['idVendedor']) && !empty($_POST[
     $id_cliente=$_POST['id_cliente'];
     $estadofactura=$_POST['estadofactura'];
     $ciNit=$_POST['ciNIt'];
-    $total=0;
     
     
-   $sql="update venta set idUsuario='$idVendedor', idCliente='$id_cliente', total='$total', idestado='$estadofactura' where id='$idFactura' ";
+   $sql="update venta set idUsuario='$idVendedor', idCliente='$id_cliente', idestado='$estadofactura' where id='$idFactura' ";
     
     $res=$con->query($sql);
     if($res){
