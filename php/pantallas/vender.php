@@ -83,7 +83,7 @@
        
         <form method="POST" class="col-5 p-3 border rounded shadow-sm container-fluid row">
         
-        <div class="col-5">
+        <div class="col-5 container-formulario">
             <legend class="text-center">Factura</legend>
                 <p class="no-print">las facturas se agregan y editan automaticamente si tienes datos en ella, procura dar click en factura nueva para limpiar todos los valores</p>
             

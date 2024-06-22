@@ -577,9 +577,6 @@ document.getElementById('searchInput').addEventListener('keyup',function(e){
                 accionesCell.innerHTML = '<button type="button" onclick="Modal('+producto.id+')" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button> ' ;
                 row.appendChild(accionesCell);
             
-                const quitarCell = document.createElement('td');
-                quitarCell.innerHTML = '<button>Eliminar</button>';
-                row.appendChild(quitarCell);
             
                 showProducts.appendChild(row);
                 
@@ -629,7 +626,7 @@ function verFactura(Id){
 
 function cargarDatosFactura(){
     let idFactura=document.getElementById('idfactura').value;
-    let idVendedor=sessionStorage.getItem('user');
+    let idVendedor=sessionStorage.getItem('xuclmt');
     let vendedor=document.getElementById('idvendedor');
     let estadoFactura=document.getElementById('estadofactura');
     let totaltemp=document.getElementById('estadofactura');
