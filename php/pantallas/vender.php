@@ -1,8 +1,10 @@
 <?php
             
-            require_once '/platvent_2/php/controladores/config.php';
+            require_once '../controladores/config.php';
             $conexion=conectarDB();      
-        
+            error_reporting(E_ALL);
+            ini_set('display_errors', 1);
+            
         ?>
 
 
@@ -102,10 +104,10 @@
                 
                 <?php 
                 
-                require_once '/platvent_2/php/controladores/config.php';
+                require_once '../controladores/config.php';
                 $conn=conectarDB();
                     
-                    $estadoF='select * from estadoventa';
+                    $estadoF='select * from estadoVenta';
                     $estadofactura=$conn->query($estadoF);
                     if($estadofactura->num_rows>0){
                       
@@ -392,7 +394,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            require_once '/platvent_2/php/controladores/config.php';
+                            require_once '../controladores/config.php';
                             
                             $conn=conectarDB();
                             $sql="SELECT * FROM venta";

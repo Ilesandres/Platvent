@@ -1,5 +1,9 @@
 
 
+drop database `bdventa`;
+
+CREATE DATABASE  IF NOT EXISTS `bdventa`;
+USE `bdventa`;
 
 
 

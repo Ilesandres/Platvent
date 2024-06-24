@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/Bogota');
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $conn=conectarDB();
 
 

@@ -421,7 +421,17 @@ if(idFactura && cantidad){
     mode:'cors',
     }).then(response=>response.json())
     .then((data)=>{
+    console.log(data);
+    if(data.message=='sinStock'){
+        Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: data.error,
+        confirmButtonText: 'Aceptar',
+        });
+    }else{
         loadProductosAdd();
+    }
         
     })
     .catch((err)=>{

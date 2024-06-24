@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'php/controladores/config.php';
+require_once '../controladores/config.php';
 
 $conn=conectarDB();
 

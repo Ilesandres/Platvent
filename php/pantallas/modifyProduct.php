@@ -2,7 +2,7 @@
 
 <?php
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 
 $idGet = $_GET['id'];
 echo '<div class="alert alert-danger m-auto col-3">producto a modificar con id : ' . $idGet . '</div>';
@@ -43,7 +43,7 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
                 <input class="form-control" type="hidden" name="idProduct" value="<?=$idGet?>"  readonly>
                 <?php
                 
-                require_once '/platvent_2/php/controladores/editarProducto.php';
+                require_once '../controladores/editarProducto.php';
 
                 while ($producto = $sql->fetch_object()) {
 

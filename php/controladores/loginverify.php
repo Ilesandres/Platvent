@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $con = conectarDB();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

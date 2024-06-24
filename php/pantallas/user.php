@@ -1,5 +1,5 @@
 <?php
-  require_once '/platvent_2/php/controladores/config.php';
+  require_once '../controladores/config.php';
 
   $conn = conectarDB();
 
@@ -84,7 +84,7 @@
             <fieldset>
                 <legend class="text-center">Nuevo Producto</legend>
                 <?php
-                require_once '/platvent_2/php/controladores/nuevoproducto.php';
+                require_once '../controladores/nuevoproducto.php';
                 ?>
                 <div class="mb-3">
                     <input type="hidden" id="usuario" readonly name="usuario"  class="form-control">
@@ -141,7 +141,7 @@
         </form>
         <div class="col-8 p-4">
         <?php
-            require_once '/platvent_2/php/controladores/eliminarProducto.php'
+            require_once '../controladores/eliminarProducto.php'
         ?>
             <table class="table table-striped table-hover table-bordered">
                 <thead class="bg-primary text-white">

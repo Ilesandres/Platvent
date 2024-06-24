@@ -1,11 +1,11 @@
 <?php
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $con=conectarDB();
 
 if(!empty($_GET['id']) && !empty($_GET['img'])){
     $idProductAfter=$_GET['id'];
-    $ruta='/platvent_2/img/';
+    $ruta='../../img/';
     $imgDelete=$_GET['img'];
     
 

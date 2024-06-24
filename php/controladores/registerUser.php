@@ -1,7 +1,7 @@
 <?php
 // registerUser.php
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $con = conectarDB();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnregisteruser']) && $_POST['btnregisteruser'] == 'ok') {

@@ -1,5 +1,5 @@
 <?php
-  require_once '/platvent_2/php/controladores/config.php';
+  require_once '../controladores/config.php';
 
   $conn = conectarDB();
   $valorGet=$_GET['search'];
@@ -74,7 +74,7 @@
     <div class="container-fluid row m-auto">
         <div class="col-8 p-4 m-auto ">
         <?php
-            require_once '/platvent_2/php/controladores/eliminarProducto.php'
+            require_once '../controladores/eliminarProducto.php'
         ?>
             <table class="table table-striped table-hover table-bordered">
                 <thead class="bg-primary text-white">

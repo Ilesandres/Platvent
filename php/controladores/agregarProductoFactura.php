@@ -1,7 +1,7 @@
 
 <?php
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 
 $conn =conectarDB();
 
@@ -17,25 +17,47 @@ if (!empty($_POST['idProduct']) && !empty($_POST['idFactura']) && !empty($_POST[
     if ($productoRes && $productoRes->num_rows > 0) {
         $productoData = $productoRes->fetch_assoc();
         $precioBase = $productoData['precioBase'];
-
-    
-        $sql = "INSERT INTO detalles (idVenta, idProducto, cantidad, precioUnitario) VALUES ('$idFactura', '$idProduct', '$cantidadPro','$precioBase')";
-      
-        $sqlRes=$conn->query($sql);
+        $cantidadRestante=$productoData['stock']-$cantidadPro;
         
-        if ($sqlRes) {
-            $response = array(
-                'message' => 'producta añadido',
-                'idProduct' => $idProduct,
-                'precio' => $precioBase,
-                'cantidad '=>$cantidadPro,
-            );
-        } else {
-            $response = array(
-                'message' => 'error',
-                'error' => 'No se pudo insertar en la tabla detalles: ' . $conn->error,
+        if($cantidadRestante>0){
+            #code
+            $sql = "INSERT INTO detalles (idVenta, idProducto, cantidad, precioUnitario) VALUES ('$idFactura', '$idProduct', '$cantidadPro','$precioBase')";
+        
+            $sqlRes=$conn->query($sql);
+            
+            if ($sqlRes) {
+            $ActStock=$conn->query("update producto set stock='$cantidadRestante' where id='$idProduct' ");
+            if($ActStock){
+                  $response = array(
+                    'message' => 'producta añadido',
+                    'idProduct' => $idProduct,
+                    'precio' => $precioBase,
+                    'cantidad '=>$cantidadPro,
+                );
+                
+            }else{
+                $response=array(
+                    'message'=>'error',
+                    'fallo al actualizar el producto',
+                );
+            }
+
+            } else {
+                $response = array(
+                    'message' => 'error',
+                    'error' => 'No se pudo insertar en la tabla detalles: ' . $conn->error,
+                );
+            }
+        }else{
+            $response=array(
+                'message'=>'sinStock',
+                'error'=>'No hay suficiente stock para agregar este producto',
+                
             );
         }
+
+    
+
     } else {
         $response = array(
             'message' => 'error',

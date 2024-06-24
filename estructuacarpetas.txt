@@ -1,0 +1,16 @@
+-platvent_2 
+    -alerts 
+    -css 
+    -js
+    -icons 
+    -img 
+    -json 
+    -php 
+        -controladores 
+        -pantallas 
+    -sql_consultas
+    -user 
+    -bd-venta.sql 
+    -estructuracarpetas.txt 
+    -index.php 
+    -readme.md

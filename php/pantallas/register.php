@@ -30,15 +30,15 @@
               autoplay
             ></lottie-player>
             <?php
-            require_once '/platvent_2/php/controladores/config.php';
-            require_once '/platvent_2/php/controladores/registerUser.php';
+            require_once '../controladores/config.php';
+            require_once '../controladores/registerUser.php';
 
             ?>
             <input type="text" name="nombre" placeholder="nombre" />
             <select name="departamento" id="departamento" >
             <option value="null">departamento</option>
             <?php
-            require_once '/platvent_2/php/controladores/config.php';
+            require_once '../controladores/config.php';
 
             $conn = conectarDB();
             $dep = 'select * from departamento order by 1 ';

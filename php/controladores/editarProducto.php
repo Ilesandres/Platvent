@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/Bogota');
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 
 $conn=conectarDB();
 
@@ -31,7 +31,7 @@ if(!empty($_POST['nombre']) &&!empty($_POST['cantidad']) &&!empty($_POST['medida
       if($sql){
       
       if (!empty($_FILES['img']['tmp_name'])) {
-      $ruta = '/platvent_2/img/';
+      $ruta = '../../img/';
       $imagen = $_FILES['img']['tmp_name'];
       $nombreImagen = $_FILES['img']['name'];
       $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));

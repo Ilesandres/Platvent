@@ -1,6 +1,6 @@
 <?php
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $con = conectarDB();
 
 
@@ -23,7 +23,7 @@ if (!empty($_POST['btnregistrar'])) {
         $imgPath = 'default.png'; //imagen que se va a cargar por default
 
         if (!empty($_FILES['img']['tmp_name'])) {
-            $ruta = '/platvent_2/img/';
+            $ruta = '../../img/';
             $imagen = $_FILES['img']['tmp_name'];
             $nombreImagen = $_FILES['img']['name'];
             $tipoImagen = strtolower(pathinfo($nombreImagen, PATHINFO_EXTENSION));

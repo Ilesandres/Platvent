@@ -1,15 +1,15 @@
 <?php 
 
-require_once '/platvent_2/php/controladores/config.php';
+require_once '../controladores/config.php';
 $conn=conectarDB();
 
 if(!empty($_POST['idFactura'])){
     
     $idfactura=$_POST['idFactura'];    
-    $sql="select estadoventa.id as estado,estadoventa.estado_venta, venta.id,venta.idCliente, venta.total,
+    $sql="select estadoVenta.id as estado,estadoVenta.estado_venta, venta.id,venta.idCliente, venta.total,
             cliente.ciNit, cliente.nombre, cliente.apellido
             from venta 
-            inner join estadoventa on venta.idestado=estadoventa.id
+            inner join estadoVenta on venta.idestado=estadoVenta.id
             inner join cliente on cliente.id=venta.idCliente
             where venta.id='$idfactura'";
             
