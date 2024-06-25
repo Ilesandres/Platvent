@@ -12,7 +12,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <link rel="stylesheet" href="/css/user.css">
@@ -264,42 +264,8 @@
                         <th scope="col">añadir</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                  
-
-                    $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
-                            producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
-                            producto.fechaActualizacion,producto.idUsuario,producto.descripcion_complete
-                            from producto
-                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  order by 1';
-                    $result = $conexion->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($datos = $result->fetch_assoc()) {
-                            ?>
-                            <tr>
-                                <td><?= $datos['id'] ?></td>
-                                <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="60"></td>
-                                <td><?= $datos['descripcion'] ?></td>
-                                <td><?= $datos['descripcion_complete']?></td>
-                                <td><?= $datos['unidadMedida'] ?></td>
-                                <td><?= $datos['stock']?></td>
-                                <td><?= $datos['saldo'] ?></td>
-                                <td><?= $datos['precioBase'] ?></td>
-                                <td><?= $datos['estado'] ?></td>
-                                <td class="text-center">
-                                    <button onclick="Modal(<?=$datos['id']?>)" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    } else {
-                        echo "<tr><td colspan='10' class='text-center'>0 resultados</td></tr>";
-                    }
-
-                    $conexion->close();
-                    ?>
+                <tbody id="productos_disponibles">
+                    
                 </tbody>
             </table>
         
@@ -434,7 +400,7 @@
                 
             
             </div>
-                escribe los datos del nuevo cliente
+                aquí puedes ver las facturas creadas
                
             </div>
             <div class="modal-footer">

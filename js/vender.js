@@ -6,6 +6,75 @@ function perfil(){
     
     
 
+function productosDisponibles(){
+    
+    let contenedor=document.getElementById('productos_disponibles');
+    
+    fetch('/php/controladores/loadProductos.php',{
+        method:'post',
+    }).then(response=>response.json())
+    .then((data)=>{
+        console.log(data);
+        products=data.products;
+        contenedor.innerHTML='';
+        products.forEach(producto => {
+        
+            const row = document.createElement('tr');
+
+            const Id = document.createElement('td');
+            Id.innerText = producto.id;
+            row.appendChild(Id);
+            
+            const imageCell = document.createElement('td');
+            const img = document.createElement('img');
+            img.src = '/img/' + producto.img;
+            img.alt = producto.descripcion;
+            img.style.width = '50px';
+            imageCell.appendChild(img);
+            row.appendChild(imageCell);
+        
+            const nombreCell = document.createElement('td');
+            nombreCell.innerText = producto.descripcion;
+            row.appendChild(nombreCell);
+            
+            const descripcion = document.createElement('td');
+            descripcion.innerText = producto.descripcion_complete;
+            row.appendChild(descripcion);
+        
+            const unidadDeMedidaCell = document.createElement('td');
+            unidadDeMedidaCell.innerText = producto.unidadMedida || 'N/A';
+            row.appendChild(unidadDeMedidaCell);
+            
+        
+            const stockCell = document.createElement('td');
+            stockCell.innerText = producto.stock;
+            row.appendChild(stockCell);
+            
+            const saldoCell = document.createElement('td');
+            saldoCell.innerText = producto.saldo;
+            row.appendChild(saldoCell);
+        
+            const precioBaseCell = document.createElement('td');
+            precioBaseCell.innerText = producto.precioBase;
+            row.appendChild(precioBaseCell);
+        
+            const estadoCell = document.createElement('td');
+            estadoCell.innerText = producto.estado || 'N/A';
+            row.appendChild(estadoCell);
+        
+            const accionesCell = document.createElement('td');
+            accionesCell.innerHTML = '<button onclick="Modal('+producto.id+')" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>';
+            row.appendChild(accionesCell);
+        
+         
+        
+            contenedor.appendChild(row);
+            
+        });
+    }).catch((err)=>console.log(err));
+}
+
+
 
 function registrarCliente() {
     let nombre = document.getElementById('nameCliente').value;
@@ -431,6 +500,7 @@ if(idFactura && cantidad){
         });
     }else{
         loadProductosAdd();
+        productosDisponibles();
     }
         
     })
@@ -629,6 +699,24 @@ function verFactura(Id){
         imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-primary custom-btn w-100" >imprimir factura</button>';
         
         cargarDatosFactura();
+        
+
+
+        const modalElement = document.getElementById('VerFacturas');
+        const bsModal = bootstrap.Modal.getInstance(modalElement);
+    
+        if (bsModal) {
+            bsModal.hide();
+        }
+        
+        Swal.fire({
+            title:'factura cargada',
+            text:'puedes modificarla y añadirle mas productos',
+            icon:'success',
+            confirmButtonText:'bueno',
+        })
+    
+
     }
     
     
@@ -668,3 +756,9 @@ function cargarDatosFactura(){
             console.log(err);
         })
 };
+
+
+document.addEventListener('DOMContentLoaded',function(){
+    
+    productosDisponibles();
+})
