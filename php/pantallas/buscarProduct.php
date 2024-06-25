@@ -20,7 +20,10 @@
  
 
 </head>
-<body>
+    
+<?php require_once '../layouts/loaderEspiral.php'; ?>
+
+<body class="hidden">
     <header class="text-center py-3">
         <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
     </header>

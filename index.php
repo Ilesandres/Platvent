@@ -3,14 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024,height=768 ;">
+    <meta name="viewport" content="width=1024, height=768">
     <title>Lista de Productos</title>
     <link rel="stylesheet" href="/css//index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
+<?php 
+    require_once './php/layouts/loaderEspiral.php';
+?>
 
-<body>
+<body class="hidden">
     <div class="Title">
         <h1 class="title p-5">Lista de Productos</h1>
     </div>
@@ -20,24 +24,24 @@
             <li><a href="">acerca de</a></li>
             <li><a href="">contactanos</a></li>
             <li><a href="php/pantallas/carrito.php">carrito</a></li>
-           
-     
-                <li class="search"><input name="search" id="search" placeholder="product" type="search" required>
-                    <span for="search">
-                        <button type="button" onclick="buscar()" name="btnsearch" title="buscar">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </span>
-                </li>
 
-            
+
+            <li class="search"><input name="search" id="search" placeholder="product" type="search" required>
+                <span for="search">
+                    <button type="button" onclick="buscar()" name="btnsearch" title="buscar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </span>
+            </li>
+
+
         </ul>
     </nav>
-    
+
     <div class="colum-3 m-5 products">
-   
-    
-    
+
+
+
         <?php
         require_once 'php/controladores/config.php';
 
@@ -52,19 +56,19 @@
 
         if ($result->num_rows > 0) {
             while ($datos = $result->fetch_assoc()) {
-        ?>
-                <div class="container">
-                    <div class="image p-3">
-                        <img src='/img/<?= $datos["img"] ?>' alt="">
-                    </div>
-                    <h2><?=$datos["descripcion"]?></h2>
-                    <h4><b> precio: <?=$datos["precioBase"]?></b></h4>
-             
-        
-                </div>
-                
-               
-                
+                ?>
+        <div class="container">
+            <div class="image p-3">
+                <img src='/img/<?= $datos["img"] ?>' alt="">
+            </div>
+            <h2><?= $datos["descripcion"] ?></h2>
+            <h4><b> precio: <?= $datos["precioBase"] ?></b></h4>
+
+
+        </div>
+
+
+
         <?php
             }
         } else {
@@ -77,6 +81,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/buscarProdcuto.js"></script>
+
 
 </body>
 

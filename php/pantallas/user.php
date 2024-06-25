@@ -18,7 +18,10 @@
     <script src="/alerts/alert_SwalsuccesProduct.js"></script>
 
 </head>
-<body>
+    
+<?php require_once '../layouts/loaderEspiral.php'; ?>
+
+<body class="hidden">
     <header class="text-center py-3">
         <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
     </header>
@@ -149,7 +152,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Descripciom</th>
+                        <th scope="col">Descripcion</th>
                         <th scope="col">Unidad de Medida</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Saldo</th>

@@ -2,8 +2,8 @@
 // Configuración de la base de datos
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');//3227349082#Iles
-define('DB_NAME', 'bdventa');//id21329892_tienda
+define('DB_PASSWORD', '');
+define('DB_NAME', 'bdventa');
 
 // Conexión a la base de datos
 function conectarDB() {
@@ -17,4 +17,6 @@ function conectarDB() {
 
     return $conn;
 }
+
+
 

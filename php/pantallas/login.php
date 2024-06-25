@@ -14,7 +14,9 @@
   <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="body">
+  <?php require_once '../layouts/loaderEspiral.php'; ?>
+
+<body class="body hidden">
 	
 	
 <div class="login-page">

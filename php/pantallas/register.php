@@ -14,8 +14,9 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     </head>
-
-    <body class="body">
+    
+    <?php require_once '../layouts/loaderEspiral.php'; ?>
+    <body class="body hidden">
      
 
       <div class="login-page">

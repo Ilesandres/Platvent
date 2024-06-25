@@ -21,8 +21,9 @@ $idGet =$_GET['id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
+<?php require_once '../layouts/loaderEspiral.php'; ?>
 
-<body>
+<body class="hidden">
     <div class="Title">
         <h1 class="title p-5">Lista de Productos</h1>
     </div>
