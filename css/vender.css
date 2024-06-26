@@ -9,6 +9,7 @@
     text-align: center;
 }
 
+
 @media print{
     .custom-btn{
         display: none;

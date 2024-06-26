@@ -19,7 +19,7 @@ if (!empty($_POST['idProduct']) && !empty($_POST['idFactura']) && !empty($_POST[
         $precioBase = $productoData['precioBase'];
         $cantidadRestante=$productoData['stock']-$cantidadPro;
         
-        if($cantidadRestante>0){
+        if($cantidadRestante>=0){
             #code
             $sql = "INSERT INTO detalles (idVenta, idProducto, cantidad, precioUnitario) VALUES ('$idFactura', '$idProduct', '$cantidadPro','$precioBase')";
         

@@ -4,8 +4,23 @@ function perfil(){
     window.location.href='/php/pantallas/perfil.php?user='+user;
     }
     
-    
 
+function loaderProductos(){
+    let table = document.getElementById('table');
+    let loader=document.getElementById('loaderProducts');
+    table.style.display='block';
+    loader.style.display='none';
+    
+}
+
+function mostrarLoader(){
+    let table = document.getElementById('table');
+    let loader=document.getElementById('loaderProducts');
+    table.style.display='none';
+    loader.style.display='block';
+}
+
+//carga productos disponibles a la vista
 function productosDisponibles(){
     
     let contenedor=document.getElementById('productos_disponibles');
@@ -20,7 +35,7 @@ function productosDisponibles(){
         products.forEach(producto => {
         
             const row = document.createElement('tr');
-
+            
             const Id = document.createElement('td');
             Id.innerText = producto.id;
             row.appendChild(Id);
@@ -71,6 +86,7 @@ function productosDisponibles(){
             contenedor.appendChild(row);
             
         });
+        loaderProductos();
     }).catch((err)=>console.log(err));
 }
 
@@ -383,6 +399,8 @@ function limpiarFactura(){
                 tableProducts.innerHTML='';
                 editarFacturaButtom.innerHTML='';
                 imprimirFacturaButtom.innerHTML='';
+                mostrarLoader();
+                productosDisponibles();
             }
         
         
@@ -420,7 +438,7 @@ if(factura){
                             <div class="form">
                                 <form method="POST" class="p-3 border rounded shadow-sm">
                                     <div class="mb-3">
-                                        <label for="cantidad para el producto" class="form-label">Nombre</label>
+                                        <label for="cantidad para el producto" class="form-label">cantidad</label>
                                         <input type="text" id="cantidadproducto" name="cantidadproducto" class="form-control" placeholder="cantidad">
                                     </div>
                                     <button type="button" value="ok" class="btn btn-success" onclick="agregarproducto(`+Idproduct+`)" name="btnagregarcliente">agregar</button>
@@ -451,6 +469,89 @@ if(factura){
     
 }
 
+
+function loadProductosRestantes(){
+    let idFact=document.getElementById('idfactura').value;
+    let formdata=new FormData();
+    formdata.append('idFactura',idFact);
+    if(idFact){
+        fetch('/php/controladores/loadProductosRestantes.php',{
+            method:'POST',
+            body:formdata,
+            mode:'cors',
+        }).then(response=>response.json())
+        .then((data)=>{
+            let productos=data.productos;
+            let contenedor=document.getElementById('productos_disponibles');
+            contenedor.innerHTML='';
+            productos.forEach(producto => {
+                const row = document.createElement('tr');
+            
+                const Id = document.createElement('td');
+                Id.innerText = producto.id;
+                row.appendChild(Id);
+                
+                const imageCell = document.createElement('td');
+                const img = document.createElement('img');
+                img.src = '/img/' + producto.img;
+                img.alt = producto.descripcion;
+                img.style.width = '50px';
+                imageCell.appendChild(img);
+                row.appendChild(imageCell);
+            
+                const nombreCell = document.createElement('td');
+                nombreCell.innerText = producto.descripcion;
+                row.appendChild(nombreCell);
+                
+                const descripcion = document.createElement('td');
+                descripcion.innerText = producto.descripcion_complete;
+                row.appendChild(descripcion);
+            
+                const unidadDeMedidaCell = document.createElement('td');
+                unidadDeMedidaCell.innerText = producto.unidadMedida || 'N/A';
+                row.appendChild(unidadDeMedidaCell);
+                
+            
+                const stockCell = document.createElement('td');
+                stockCell.innerText = producto.stock;
+                row.appendChild(stockCell);
+                
+                const saldoCell = document.createElement('td');
+                saldoCell.innerText = producto.saldo;
+                row.appendChild(saldoCell);
+            
+                const precioBaseCell = document.createElement('td');
+                precioBaseCell.innerText = producto.precioBase;
+                row.appendChild(precioBaseCell);
+            
+                const estadoCell = document.createElement('td');
+                estadoCell.innerText = producto.estado || 'N/A';
+                row.appendChild(estadoCell);
+            
+                const accionesCell = document.createElement('td');
+                accionesCell.innerHTML = '<button onclick="Modal('+producto.id+')" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>';
+                row.appendChild(accionesCell);
+            
+             
+            
+                contenedor.appendChild(row);
+            });
+            
+            console.log(data);
+            
+            
+        }).catch((err)=>console.log(err));
+    }else{
+        Swal.fire({
+            title:'error',
+            text:'primero debes crear o seleccionar una factura',
+            icon:'error',
+            
+        });
+    }
+   
+
+}
 
 
 function agregarproducto(IDproduct){
@@ -500,7 +601,14 @@ if(idFactura && cantidad){
         });
     }else{
         loadProductosAdd();
-        productosDisponibles();
+        loadProductosRestantes();
+        Swal.fire({
+            icon: 'success',
+            title: 'Producto agregado',
+            text: 'El producto se ha agregado correctamente',
+            confirmButtonText: 'Aceptar',
+            
+        })
     }
         
     })
@@ -596,11 +704,11 @@ function loadProductosAdd(){
                 row.appendChild(estadoCell);
             
                 const accionesCell = document.createElement('td');
-                accionesCell.innerHTML = '<button type="button" class="btn btn-warning no-print"><i class="fa-solid fa-pen-to-square"></i></button>';
+                accionesCell.innerHTML = '<button type="button" onclick="ModalEditar('+producto.id+')" class="btn btn-warning no-print"><i class="fa-solid fa-pen-to-square"></i></button>';
                 row.appendChild(accionesCell);
             
                 const quitarCell = document.createElement('td');
-                quitarCell.innerHTML = '<button type="button" class="btn btn-danger no-print">Eliminar</button>';
+                quitarCell.innerHTML = '<button type="button" onclick="eliminarProductoAñadido('+producto.id+')" class="btn btn-danger no-print">Eliminar</button>';
                 row.appendChild(quitarCell);
             
                 tableProducts.appendChild(row);
@@ -608,6 +716,7 @@ function loadProductosAdd(){
             });
             totalProducts.value=total;
             agregarTotalFact(idFactura,total);
+            loadProductosRestantes();
             
         })
         .catch((err)=>{
@@ -700,6 +809,7 @@ function verFactura(Id){
         
         cargarDatosFactura();
         
+        
 
 
         const modalElement = document.getElementById('VerFacturas');
@@ -756,6 +866,142 @@ function cargarDatosFactura(){
             console.log(err);
         })
 };
+
+
+
+
+function eliminarProductoAñadido(idProduct){
+    let idProducto=idProduct;
+    let idFactura=document.getElementById('idfactura').value;
+    let formdata=new FormData();
+    formdata.append('idFactura',idFactura);
+    formdata.append('idProducto',idProducto);
+    
+    Swal.fire({
+                title:'seguro',
+                text:'deseas eliminar este producto de la factura?',
+                icon:'warning',
+                confirmButtonText:'estoy seguro',
+            }).then((result) => {
+                if(result.isConfirmed){
+                 fetch('/php/controladores/deleteProductoAnadido.php',{
+                    method:'POST',
+                    body:formdata,
+                    mode:'cors',
+                }).then(response=>response.json())
+                .then((data)=>{
+                    console.log(data);
+                    if(data.status=='success'){
+                        loadProductosAdd();
+                        loadProductosRestantes();
+                        
+                    }
+                    
+                })
+                .catch((err)=>console.log(err))
+                
+                }
+            })
+    
+   
+
+    
+
+}
+
+
+function ModalEditar(id){
+let Idproduct=id;
+    const modalHTML2 = `
+            <div class="modal fade" id="cantidadproductos" aria-hidden="true" aria-labelledby="AgregarCantidadProductos" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="AgregarCantidad">cantidad</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form">
+                                <form method="POST" class="p-3 border rounded shadow-sm">
+                                    <div class="mb-3">
+                                        <label for="cantidad para el producto" class="form-label">cantidad</label>
+                                        <input type="text" id="cantidadproductoEdit" name="cantidadproductoEdit" class="form-control" placeholder="cantidad">
+                                    </div>
+                                    <button type="button" value="ok" class="btn btn-success" onclick="editarCantidadProducto(`+Idproduct+`)" name="btnagregarcliente">agregar</button>
+                                </form>
+                            </div>
+                            escribe la cantidad que dese del producto
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHTML2);
+        
+    
+        const modalElement = new bootstrap.Modal(document.getElementById('cantidadproductos'));
+        modalElement.show();
+}
+
+function editarCantidadProducto(id){
+    let cantidad = document.getElementById('cantidadproductoEdit').value;
+
+    const modalElement = document.getElementById('cantidadproductos');
+    const bsModal = bootstrap.Modal.getInstance(modalElement);
+
+    if (bsModal) {
+        bsModal.hide();
+    }
+    
+    console.log(cantidad);
+    
+    // Espera a que el modal se oculte antes de eliminarlo del DOM
+    modalElement.addEventListener('hidden.bs.modal', function(event) {
+        modalElement.remove();
+    });
+
+    let IdProduct=id;
+    let idFact=document.getElementById('idfactura').value;
+    let formdata=new FormData();
+    formdata.append('idFactura',idFact);
+    formdata.append('idProducto',IdProduct);
+    formdata.append('cantidad',cantidad);
+    if(IdProduct && idFact && cantidad){
+        fetch('/php/controladores/editarCantidadProduct.php',{
+            method:'POST',
+            body:formdata,
+            mode:'cors'
+        }).then(response=>response.json())
+        .then((data)=>{
+            console.log(data);
+            
+            Swal.fire({
+                icon: 'success',
+                title: '¡Exito!',
+                text: 'Se ha editado la cantidad del producto',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            loadProductosAdd();
+            
+        })
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se pudo editar la cantidad del producto',
+            
+        })
+    }
+    
+    
+}
+
+
+
 
 
 document.addEventListener('DOMContentLoaded',function(){

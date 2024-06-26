@@ -7,7 +7,7 @@ icon: 'warning',
 })
 
 function previewImg() {
-  let img = document.getElementById("inputimg").value;
+  let img = document.getElementById("imgAfter").value;
   console.log(img);
   
   let impre=document.getElementById('previewImage');

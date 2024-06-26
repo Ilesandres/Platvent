@@ -13,7 +13,7 @@ if (!empty($_POST['idFactura'])) {
                     producto.precioBase, 
                     detalles.cantidad, 
                     producto.unidadMedida, 
-                    venta.total, estadoproducto.estado
+                    venta.total, estadoproducto.estado,producto.id, venta.id as ventaId
                 FROM 
                     producto
                 INNER JOIN 

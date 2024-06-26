@@ -22,7 +22,13 @@
     <link rel="stylesheet" href="/css/vender.css">
     
 </head>
-<body>
+
+<?php require_once '../layouts/loaderEspiral.php'; ?>
+
+<body class="hidden">
+
+    
+
 <header class="text-center py-3">
         <h1 class="text-center text-secondary font-weight-bold ">Ventas</h1>
     </header>
@@ -226,8 +232,9 @@
                             </tr>
                                  
                             </thead>
+                           
                             <tbody id="table-productos-añadidos" >
-                            
+
                                 
                             </tbody>
                          </table>
@@ -248,8 +255,8 @@
              
         <legend class="text-center">Productos disponibles</legend>
         <a class="btn btn-light d-flex justify-content-center" data-bs-toggle="modal" title="buscar" href="#exampleModalToggle" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
-
-        <table class="table table-striped table-hover table-bordered">
+    <?php require_once '../layouts/loaderProducts.php'; loaderProducts(); ?>
+        <table class="table table-striped table-hover table-bordered " id="table">
                 <thead class="bg-primary text-white">
                     <tr>
                         <th scope="col">ID</th>
@@ -263,9 +270,11 @@
                         <th scope="col">Estado</th>
                         <th scope="col">añadir</th>
                     </tr>
-                </thead>
-                <tbody id="productos_disponibles">
                     
+                </thead>
+                 
+                <tbody id="productos_disponibles"  >
+                   
                 </tbody>
             </table>
         
@@ -283,6 +292,7 @@
     <footer>
     
     </footer>
+    <div id="modalCantidadS"></div>
     <div class="modal fade" id="AgregarCliente" aria-hidden="true" aria-labelledby="AgregarClienteLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

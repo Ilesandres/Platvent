@@ -48,7 +48,7 @@ if (!empty($_POST['btnregistrar'])) {
 
                             if (move_uploaded_file($imagen, $ruta . $cam)) {
                                 $con->commit(); // Commit transaction
-                                echo '<div class="alert alert-info">Imagen guardada exitosamente</div>';
+                                
                                 header("Location: " . $_SERVER['PHP_SELF'] . "?status=success&message=Producto creado con éxito");
                                 exit();
                                 
@@ -95,4 +95,4 @@ if (!empty($_POST['btnregistrar'])) {
     }
 }
 
-?>
+

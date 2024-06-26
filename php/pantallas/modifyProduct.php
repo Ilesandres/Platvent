@@ -106,7 +106,7 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
                                 <input type="text" name="imgAfter" id="imgAfter"  class="form-control" placeholder="imgAfter" readonly value="<?= $producto->img ?>">
                             </div>
                             <div class="mb-3">
-                                <img id="previewImage" src="/img/<?=$producto->img?>" alt="Previsualización de la imagen" alt="vistaimg" style="max-width: 100px; display: none; margin:auto;">
+                                <img id="previewImage"  src="/img/<?=$producto->img?>" alt="Previsualización de la imagen" alt="vistaimg" style="max-width: 100px; display: none; margin:auto;">
                             </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label" id="imgProduct">Imagen del Producto (JPG o PNG)</label>

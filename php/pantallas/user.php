@@ -19,7 +19,7 @@
 
 </head>
     
-<?php require_once '../layouts/loaderEspiral.php'; ?>
+
 
 <body class="hidden">
     <header class="text-center py-3">
