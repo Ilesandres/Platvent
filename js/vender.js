@@ -330,31 +330,38 @@ function añadirID(id){
 
 
 document.getElementById('IDcliente').addEventListener('keyup', function(e){
-
-    let userId=document.getElementById('IDcliente');
-    let userIdinput=userId.value;
-    let lista=document.getElementById('list');
-   
     
-    let formdata= new FormData();
-    formdata.append('IDcliente',userIdinput);
+    if(e.key=='Escape' || e.key=='Esc'){
+        let lista=document.getElementById('list');
+        lista.style.display='none';
+    }else{
+        let userId=document.getElementById('IDcliente');
+        let userIdinput=userId.value;
+        let lista=document.getElementById('list');
     
-    if(userIdinput){
-    
-        fetch('/php/controladores/buscarClienteporId.php',{
-            
-            method:'POST',
-            body:formdata,
-            mode:'cors'
-        }).then(response=>response.json())
-        .then((data) => {
-            lista.style.display='block';
-            lista.innerHTML=data;
-            
-        })
-        .catch((err)=>{console.log('ERROR',err)});
+        
+        let formdata= new FormData();
+        formdata.append('IDcliente',userIdinput);
+        
+        if(userIdinput){
+        
+            fetch('/php/controladores/buscarClienteporId.php',{
+                
+                method:'POST',
+                body:formdata,
+                mode:'cors'
+            }).then(response=>response.json())
+            .then((data) => {
+                lista.style.display='block';
+                lista.innerHTML=data;
+                
+            })
+            .catch((err)=>{console.log('ERROR',err)});
+        
+        }
     
     }
+
     
 
 

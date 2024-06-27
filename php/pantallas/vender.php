@@ -150,7 +150,7 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="IDcliente" class="form-label">ID Cliente</label>
+                    <label for="IDcliente" class="form-label">ID Cliente</label><span><h6>tecla escape para cerrar la busqueda</h6></span>
                     <input type="number" id="IDcliente" name="IDcliente" class="form-control"
                         placeholder=" ID cliente" >
                         <table class="table table-striped">

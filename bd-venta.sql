@@ -370,5 +370,9 @@ create table if not exists windowsActiva(
 
 insert into windowsActiva(`idwindow`,`Activa`)values(1,true),(2,true),(3,true);
 
+alter table oficina add column idEncargado int default 1;
+
+alter table oficina add constraint fk_Encargado foreign key(idEncargado) references usuario(idUsuario);
+
 
 

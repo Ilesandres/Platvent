@@ -23,6 +23,7 @@ if(!empty($idUser)){
             'data'=>$row,
             'Rol'=>$Rol
         );
+        $_SESSION['Rol']=$Rol;
 
         echo json_encode($response);
     }else{

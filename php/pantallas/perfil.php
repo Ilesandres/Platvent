@@ -162,6 +162,7 @@ $idUserGet=$_GET['user'];
     </tbody>
 
 <script src="/js/perfil.js"></script>
+<script src="/js/verifysesionstorage.js"></script>
 </body>
 
 </html>
