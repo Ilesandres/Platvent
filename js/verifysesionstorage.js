@@ -2,9 +2,9 @@ function sesionStorage() {
     const user = sessionStorage.getItem("user");
     const currentPath = window.location.pathname;
   
-    // Verifica si el usuario está autenticado
+
     if (user !== null) {
-        // Verifica si la ruta actual es diferente de la ruta protegida
+
 
         if (currentPath !== '/php/pantallas/user.php' && currentPath !=='/php/pantallas/modifyProduct.php' && currentPath!='/php/pantallas/buscarProduct.php'
         && currentPath !='/php/pantallas/vender.php' && currentPath !=='/php/pantallas/perfil.php'
@@ -15,7 +15,7 @@ function sesionStorage() {
 
     } 
   }else {
-        // Si el usuario no está autenticado, muestra una alerta y redirige al inicio de sesión
+
         Swal.fire({
             icon: 'error',
             title: 'No has iniciado sesión',
@@ -48,7 +48,18 @@ function sesionStorage() {
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "/php/pantallas/login.php";
+        fetch('/php/controladores/eliminarsesion.php',{
+          method: 'POST',
+          mode: 'cors'
+        }).the(response=>response.json())
+        .then((data)=>{
+          console.log(data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
       }
     });
   }
+  
 

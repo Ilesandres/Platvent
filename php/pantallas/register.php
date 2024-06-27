@@ -1,3 +1,12 @@
+<?php 
+require_once '../controladores/isActiva.php';
+
+    $name='register';
+
+    $isActiva=isActiva($name);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <html>

@@ -1,3 +1,13 @@
+
+<?php 
+require_once '../controladores/isActiva.php';
+
+    $name='login';
+
+    $isActiva=isActiva($name);
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en" >
 <html>

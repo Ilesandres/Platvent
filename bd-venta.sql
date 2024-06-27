@@ -349,4 +349,26 @@ INSERT INTO `detalles` (`idVenta`, `idProducto`, `cantidad`, `precioUnitario`) V
 /*!40000 ALTER TABLE `detalles` ENABLE KEYS */;
 
 
+drop table if exists windows ;
+create table if not exists windows(
+	id int auto_increment primary key,
+    pestana varchar(45) not null,
+    ruta varchar(80)
+);
+
+
+insert into windows(`pestana`) values('inicio'),('login'),('registrar');
+
+drop table if exists windowsActiva;
+
+create table if not exists windowsActiva(
+	idWindowsActiva int auto_increment primary key,
+    idWindow int,
+    Activa boolean default 'false',
+    foreign key(idwindow) references windows(id)
+);
+
+insert into windowsActiva(`idwindow`,`Activa`)values(1,true),(2,true),(3,true);
+
+
 

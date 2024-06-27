@@ -18,5 +18,3 @@ function conectarDB() {
     return $conn;
 }
 
-
-

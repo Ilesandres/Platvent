@@ -1,8 +1,11 @@
 <?php
+
   require_once '../controladores/config.php';
 
   $conn = conectarDB();
 
+
+    require_once '../controladores/verifySession.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
 
 <body class="hidden">
     <header class="text-center py-3">
-        <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
+        <h1 class="text-center text-secondary font-weight-bold ">Sección Personal <?=$_SESSION['usuario'].$_SESSION['user_id']?></h1>
     </header>
     <nav class="text-center my-3">
         <button class="btn btn-primary mx-2" title="inicio" onclick="window.location='/index.php'"><i class="fa-solid fa-house"></i></button>
@@ -32,10 +35,10 @@
 
         <buttom class="btn btn-primary mx-2 " title="vender" onclick="window.location.href='/php/pantallas/vender.php'"><i class="fa-solid fa-store"></i></buttom>
 
-        <buttom class="btn btn-primary mx-2 " ></buttom>
-
-        <buttom class="btn btn-primary mx-2 " ></buttom>
+        
         <button class="btn btn-danger mx-2" title="cerrar sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <div id="nuevosBotones">
+        </div>
         
         
                 <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">

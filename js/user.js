@@ -3,9 +3,7 @@ function clasidhome() {
   isurres.value = sessionStorage.getItem("userclasId");
 }
 
-document
-  .getElementById("formFile")
-  .addEventListener("change", function (event) {
+document.getElementById("formFile").addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -19,22 +17,6 @@ document
   });
 
 
-function cerrarSesion() {
-  sessionStorage.removeItem("user");
-  sessionStorage.removeItem("super");
-  sessionStorage.removeItem("usuario");
-  sessionStorage.removeItem("userclasId");
-  Swal.fire({
-    icon: "success",
-    title: "Sesión cerrada",
-    text: "Has cerrado sesión correctamente.",
-    confirmButtonText: "Aceptar",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      window.location.href = "/php/pantallas/login.php";
-    }
-  });
-}
 
 
 function acercaDe() {
@@ -46,9 +28,6 @@ function acercaDe() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  clasidhome();
-});
 
 function cerrarBuscar() {
   window.location.href = "/php/pantallas/user.php";
@@ -72,3 +51,39 @@ function perfil(){
 let user=sessionStorage.getItem("userclasId");
 window.location.href='/php/pantallas/perfil.php?user='+user;
 }
+
+function admin(){
+  const botones=document.getElementById('nuevosBotones');
+  const button1=document.createElement('button');
+  button1.innerHTML='Administrar';
+  button1.setAttribute('class','btn btn-primary btn-lg btn-block m-1');
+  button1.setAttribute('onclick','window.location.href="/php/pantallas/admin.php"');
+  botones.appendChild(button1);
+  
+}
+
+
+
+
+//usa sesion de php si hay algun error revisa las sesiones de php 
+function verifyRol(){
+
+    fetch('/php/controladores/verifyRol.php',{
+    method:'POST',
+    mode:'cors'
+    }).then(response=>response.json())
+    .then((data)=>{
+      console.log(data)
+      if(data.Rol=='Admin'){
+        admin();
+      }
+    })
+    .catch((err)=>console.log(err))
+    
+}
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  clasidhome();
+  verifyRol();
+});

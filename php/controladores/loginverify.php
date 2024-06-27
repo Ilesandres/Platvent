@@ -12,23 +12,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $datos['user'];
     $contraseña = $datos['password'];
 
-    // Escapar las variables para evitar la inyección SQL
+
     $usuario_escapado = mysqli_real_escape_string($con, $usuario);
 
-    // Consulta SQL para seleccionar todos los usuarios con el nombre de usuario correspondiente
     $sql = "SELECT * FROM usuario WHERE usuario='$usuario_escapado'";
     $result = $con->query($sql);
 
     $login_success = false;
 
     if ($result->num_rows > 0) {
-        // Si se encuentran usuarios con el nombre de usuario correspondiente
         while ($row = $result->fetch_assoc()) {
             $contraseña_hash = $row['contraseña'];
 
-            // Verificar si la contraseña ingresada coincide con el hash almacenado
+
             if (password_verify($contraseña, $contraseña_hash)) {
-                // Si la contraseña coincide para al menos un usuario
+              
                 $login_success = true;
                 $response = array(
                     'status' => 'success',
@@ -36,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'iduser' => $row['idUsuario'],
                     'usuario' => $usuario
                 );
+                session_start();
+                $_SESSION['user_id']=$row['idUsuario'];
+                $_SESSION['usuario']=$row['usuario'];
                 echo json_encode($response);
                 break; // Salir del bucle ya que hemos encontrado una coincidencia exitosa
             }
