@@ -1,6 +1,7 @@
 const seS = sessionStorage.getItem("user");
-console.log(seS);
+
 if (seS) {
+  console.log(seS);
   window.location.href = "/php/pantallas/user.php";
 }
 
@@ -41,10 +42,20 @@ function iniciarSecion() {
         console.log("Datos introducidos correctamente");
         sessionStorage.setItem("usuario", user+data.usuario);
         sessionStorage.setItem("super", data.usuario);
+        
+        const rememberMe = document.getElementById('rememberMe').checked;
+        if (rememberMe) {
+              document.cookie = `username=${user}; path=/; max-age=${60 * 60 * 24 * 30}`; // Expira en 30 días
+          } else {
+              document.cookie = 'username=; path=/; max-age=0'; // Eliminar cookie
+          }
+      
+      
         await Swal.fire({
           title: "Bienvenido " + user,
           text: "iniciando sesion",
           icon: "success",
+          
         });
         sessionStorage.setItem('userclasId',idUserres) ;
 
@@ -74,3 +85,16 @@ function iniciarSecion() {
 function registrarse() {
   console.log("registrandose");
 }
+
+ function revisarCookies() {
+  const cookies = document.cookie.split(';');
+  cookies.forEach(cookie => {
+      const [name, value] = cookie.trim().split('=');
+      if (name === 'username' && value) {
+          document.getElementById('user').value = value;
+          document.getElementById('rememberMe').checked = true;
+      }
+  });
+};
+
+revisarCookies();

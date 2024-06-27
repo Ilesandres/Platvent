@@ -328,6 +328,7 @@ function añadirID(id){
 
 
 
+
 document.getElementById('IDcliente').addEventListener('keyup', function(e){
 
     let userId=document.getElementById('IDcliente');
@@ -379,7 +380,8 @@ function limpiarFactura(){
     let totalProducts=document.getElementById('total');
     const tableProducts=document.getElementById('table-productos-añadidos');
     let editarFacturaButtom=document.getElementById('editarFacturaAct');
-    let imprimirFacturaButtom=document.getElementById('imprimirFactura');
+    let imprimirFacturaButtom=document.getElementById('imprimirFactura'); 
+    let lista=document.getElementById('list');
     
     if(estadoFactura.value && IdVendedor.value && IDCliente.value && NombreCliente.value){
         Swal.fire({
@@ -399,6 +401,7 @@ function limpiarFactura(){
                 tableProducts.innerHTML='';
                 editarFacturaButtom.innerHTML='';
                 imprimirFacturaButtom.innerHTML='';
+                lista.innerHTML='';
                 mostrarLoader();
                 productosDisponibles();
             }
@@ -805,7 +808,7 @@ function verFactura(Id){
         imprimirFacturaButtom.innerHTML='';
         editarFacturaButtom.innerHTML='';
         editarFacturaButtom.innerHTML='<button type="button" onclick="modificarFactura('+idVenta+')" class="btn btn-success custom-btn w-100" >editar factura</button>';
-        imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-primary custom-btn w-100" >imprimir factura</button>';
+        imprimirFacturaButtom.innerHTML+='<button type="button" onclick="imrpimirFactura()" class="btn btn-secondary custom-btn w-100" >imprimir factura</button>';
         
         cargarDatosFactura();
         
@@ -1000,8 +1003,177 @@ function editarCantidadProducto(id){
     
 }
 
+function deletecontentSearch(){
+    let searchFactura=document.getElementById('searchFactura');
+    const tableBody=document.getElementById('Bodyfacturas');
+    searchFactura.value='';
+    tableBody.style.display='none';
+}
+
+document.getElementById('searchFactura').addEventListener('keyup',function(e){
+
+    let searchFactura=document.getElementById('searchFactura').value;
+    
+    
+    const tableBody=document.getElementById('Bodyfacturas');
+    
+    tableBody.innerHTML='';
+    if(searchFactura){
+        let formdata=new FormData();
+        formdata.append('searchFactura',searchFactura);
+        fetch('/php/controladores/buscarFactura.php',{
+            method:'POST',
+            body:formdata,
+            mode:'cors'
+            
+        }).then(response=>response.json())
+        .then((data)=>{
+            tableBody.innerHTML=' ';
+           
+
+            console.log(data)
+            if(data.status=="success"){
+                let facturas=data.facturas;
+                const row = document.createElement('tr');
+                    
+                const Id1 = document.createElement('td');
+                Id1.innerText = 'factura id';
+                row.appendChild(Id1);
+                
+                const ciNit1 = document.createElement('td');
+                ciNit1.innerText = 'identificacion';
+                row.appendChild(ciNit1);
+                
+                const nombre1 = document.createElement('td');
+                nombre1.innerText = 'nombre cliente';
+                row.appendChild(nombre1);
+                
+                const fecha1= document.createElement('td');
+                fecha1.innerText = 'fecha de registro';
+                row.appendChild(fecha1);
+                
+                const total1= document.createElement('td');
+                total1.innerText = 'total factura';
+                row.appendChild(total1);
+                
+                const buton=document.createElement('td');
+                buton.innerHTML='editar';
+                row.appendChild(buton);
+                
+                const but=document.createElement('td');
+                but.innerHTML='eliminar';
+                row.appendChild(but);
+                
+                tableBody.appendChild(row)
+                
+                    let loaded=false;
+                
+                    facturas.forEach(factura => {
+                    
+                        const row = document.createElement('tr');
+                    
+                        const Id = document.createElement('td');
+                        Id.innerText = factura.id;
+                        row.appendChild(Id);
+                        
+                        const ciNit = document.createElement('td');
+                        ciNit.innerText = factura.ciNit;
+                        row.appendChild(ciNit);
+                        
+                        const nombre = document.createElement('td');
+                        nombre.innerText = factura.nombre+' '+factura.apellido;
+                        row.appendChild(nombre);
+                        
+                        const fecha= document.createElement('td');
+                        fecha.innerText = factura.fechaRegistro;
+                        row.appendChild(fecha);
+                        
+                        const total= document.createElement('td');
+                        total.innerText = factura.total;
+                        row.appendChild(total);
+                        
+                        const buton1=document.createElement('td');
+                        buton1.innerHTML='<button onclick="verFactura('+factura.id+')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>';
+                        row.appendChild(buton1);
+                        
+                        const buton2=document.createElement('td');
+                        buton2.innerHTML='<button onclick="eliminarFactura('+factura.id+')" class="btn btn-daanger" ><i class="fa-solid fa-trash"></i></button>';
+                        row.appendChild(buton2);
+                        
+                        tableBody.appendChild(row)
+                    })
+                    if(facturas){
+                        loaded=true;
+                    }
+                    if(loaded){
+                        tableBody.style.display='block';
+                    }
+                }else{
+                    const row=document.createElement('tr');
+                    
+                    const mensaje=document.createElement('td');
+                    mensaje.innerText ='sin facturas encontradas';
+                    row.appendChild(mensaje);
+                    
+                    tableBody.appendChild(row);
+                    
+                }
+                
+            
+        })
+        .catch((err)=>console.log(err))
+    }
+    
+});
 
 
+function eliminarFactura(idFactura){
+
+    let searchFactura=document.getElementById('searchFactura');
+    
+    
+    const tableBody=document.getElementById('Bodyfacturas');
+
+let IDFactura=idFactura;
+let formdata=new FormData();
+formdata.append('idfactura',IDFactura);
+    Swal.fire({
+    title: '¿Estas seguro de eliminar esta factura?',
+    text: 'si eliminas esta factura ya no podras ver sus productos ni mucho menos modificarla',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar',
+    cancelButtonText: 'Cancelar'
+    }).then((result) => {
+    if (result.isConfirmed) {
+        fetch('/php/controladores/eliminarFactura.php',{
+            method:'POST',
+            body:formdata,
+            mode: 'cors'
+        }).then(response=>response.json())
+        .then((data)=>{
+            console.log(data);
+            Swal.fire({
+                icon: 'success',
+                title: 'Factura eliminada',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            searchFactura.value='';
+            tableBody.innerHTML='';
+        })
+        .catch((err)=>console.log(err))
+        
+    }else if(result.isDismissed){
+        Swal.close();
+    
+    }
+    
+    })
+    
+}
 
 
 document.addEventListener('DOMContentLoaded',function(){

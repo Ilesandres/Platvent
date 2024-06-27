@@ -185,22 +185,19 @@
         <i></i>ver facturas </a>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-danger custom-btn w-100">Eliminar Facturas</button>
-        </div>
-        <div class="col">
-            <a class="btn btn-primary custom-btn w-100" data-bs-toggle="modal" title="Agregar Cliente" href="#AgregarCliente" role="button">
+            <a class="btn btn-warning custom-btn w-100" data-bs-toggle="modal" title="Agregar Cliente" href="#AgregarCliente" role="button">
                 <i class="fa-regular fa-address-card"></i> Agregar Cliente
             </a>
         </div>
         
-        <div class="col">
-            <button class="btn btn-info custom-btn w-100" href="#VerFacturas">Acciones</button>
-        </div>
+        
         <div class="col" id="editarFacturaAct">
-            
+          
         </div>
         <div class="col" id="imprimirFactura">
         </div>
+        <div class="col"></div>
+        <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
         <div class="col"></div>
@@ -354,6 +351,16 @@
             </div>
             
             <div class="modal-body">
+            <div class="mb-3">
+                <div class="search">
+                     <input type="text" id="searchFactura" name="searchFactura" class="form-control"
+                    placeholder="Id Factura"><span><button class="btn-delete btn btn-light" onclick="deletecontentSearch()"><i class="fa-solid fa-x"></i></butto></span>
+                   
+                </div>
+                    <span class="m-auto">la busqueda puede demorar un poco, por favor ten paciencia</span>
+                    <ul id="Bodyfacturas"></ul>
+                
+            </div>
             <div class="ShowFacturasdiv">
                 <div class="Facturs">
                     <div class="Facturas">
@@ -368,7 +375,7 @@
                     <th scope="col">editar</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <?php
                             require_once '../controladores/config.php';
                             

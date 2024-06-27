@@ -26,6 +26,10 @@
       <lottie-player src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"  background="transparent"  speed="1"  style="justify-content: center;" loop  autoplay></lottie-player>
       <input type="text" id="user" placeholder="&#xf007;  username"/>
       <input type="password" id="password" placeholder="&#xf023;  password"/>
+            <div class="rememberme">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Recuérdame</label>
+            </div>
       <i class="fas fa-eye" onclick="show()"></i> 
       <br>
       <br>

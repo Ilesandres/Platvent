@@ -6,6 +6,17 @@
   background-size: cover;
 }
 
+.rememberme{
+  display: flex;
+  padding: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.login-page input[type="checkbox"] {
+  margin-right: 10px;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
