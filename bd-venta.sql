@@ -374,5 +374,6 @@ alter table oficina add column idEncargado int default 1;
 
 alter table oficina add constraint fk_Encargado foreign key(idEncargado) references usuario(idUsuario);
 
+alter table usuario add column isActivo boolean default true;
 
 

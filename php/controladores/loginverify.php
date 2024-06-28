@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'status' => 'success',
                     'message' => 'Inicio de sesión exitoso',
                     'iduser' => $row['idUsuario'],
+                    'Activo' =>$row['isActivo'],
                     'usuario' => $usuario
                 );
                 session_start();

@@ -20,6 +20,7 @@ function iniciarSecion() {
   })
     .then((response) => response.json())
     .then(async (data) => {
+
       console.log("Respuesta del servidor", data);
       let idUserres=data.iduser;
       console.log(idUserres,'  user');
@@ -38,29 +39,44 @@ function iniciarSecion() {
         "Respuesta del servidor: " + JSON.stringify(data);
       document.body.appendChild(responseDiv);
       if (data.status == "success") {
-        sessionStorage.setItem("user", user);
-        console.log("Datos introducidos correctamente");
-        sessionStorage.setItem("usuario", user+data.usuario);
-        sessionStorage.setItem("super", data.usuario);
-        
-        const rememberMe = document.getElementById('rememberMe').checked;
-        if (rememberMe) {
-              document.cookie = `username=${user}; path=/; max-age=${60 * 60 * 24 * 30}`; // Expira en 30 días
-          } else {
-              document.cookie = 'username=; path=/; max-age=0'; // Eliminar cookie
-          }
-      
-      
-        await Swal.fire({
-          title: "Bienvenido " + user,
-          text: "iniciando sesion",
-          icon: "success",
-          
-        });
-        sessionStorage.setItem('userclasId',idUserres) ;
+            if(data.Activo==true){
+               sessionStorage.setItem("user", user);
+              console.log("Datos introducidos correctamente");
+              sessionStorage.setItem("usuario", user+data.usuario);
+              sessionStorage.setItem("super", data.usuario);
+              
+              const rememberMe = document.getElementById('rememberMe').checked;
+              if (rememberMe) {
+                    document.cookie = `username=${user}; path=/; max-age=${60 * 60 * 24 * 30}`; // Expira en 30 días
+                } else {
+                    document.cookie = 'username=; path=/; max-age=0'; // Eliminar cookie
+                }
+            
+            
+              await Swal.fire({
+                title: "Bienvenido " + user,
+                text: "iniciando sesion",
+                icon: "success",
+                
+              });
+              sessionStorage.setItem('userclasId',idUserres) ;
 
-        sessionStorage.setItem('xuclmt',idUserres,',',user,',',data.usuario);
-        window.location.href = "/php/pantallas/user.php?numuser="+idUserres+"&user"+user;
+              sessionStorage.setItem('xuclmt',idUserres,',',user,',',data.usuario);
+              window.location.href = "/php/pantallas/user.php?numuser="+idUserres+"&user"+user;
+
+              
+      }else{
+        Swal.fire({
+          title: "Error",
+          text: "comunicate con tu administrador para reactivar tu usuario",
+          icon: "error",
+          confirmButtonText: 'Aceptar'
+        
+        })
+      }
+      
+ 
+
 
       } else {
         console.log("error " + data);
