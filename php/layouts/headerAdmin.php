@@ -1,5 +1,11 @@
 <?php
 
+require_once '../controladores/isActiva.php';
+
+$name='admin';
+
+$isActiva=isActiva($name);
+
   require_once '../controladores/config.php';
 
   $conn = conectarDB();

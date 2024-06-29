@@ -19,7 +19,24 @@ require_once '../layouts/headerAdmin.php';
         ?>
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card" style="width: 50%;">
-                <img src="../../icons/support.jpg" class="card-img-top" alt="...">
+            <?php 
+                if($row['isActivo']){
+                ?>
+                
+                <img src="../../icons/user-active.png" class="card-img-top" alt="...">
+                <?php 
+                
+                }else{
+                ?>
+                
+                <img src="../../icons/user-out.jpg" class="card-img-top" alt="...">
+                <?php
+                
+                
+                }
+                
+            ?>
+                
                 <div class="card-body">
                 <h1><?=$row['usuario']?></h1>
                 <h4><?=$row['nombre']?></h4>
@@ -27,6 +44,7 @@ require_once '../layouts/headerAdmin.php';
                 if($row['isActivo']==true){
                 
                 ?>
+                    
                         <h6>estado : activo</h6>
                         <p class="card-text"><?=$row['descripcion']?></p>
                     

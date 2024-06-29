@@ -1,10 +1,6 @@
 
 <?php 
-require_once '../controladores/isActiva.php';
 
-$name='admin';
-
-$isActiva=isActiva($name);
     require_once '../layouts/headerAdmin.php';
 ?>
 <div class="container-fluid">
@@ -26,7 +22,7 @@ $isActiva=isActiva($name);
             
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card" style="width: 50%;">
-                    <img src="../../icons/support.jpg" class="card-img-top" alt="...">
+                    <img src="../../icons/page-demo.png" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h1>Paginas</h1>
                         <p class="card-text">desde esta seccion podras editar las paginas habilitadas a los empleados de las diferentes oficinas</p>
@@ -39,7 +35,7 @@ $isActiva=isActiva($name);
    
         <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card" style="width: 50%;">
-                    <img src="../../icons/support.jpg" class="card-img-top" alt="...">
+                    <img src="../../icons/oficinas-mundo.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h1>Oficinas</h1>
                         <p class="card-text">desde esta seccion podras editar, crear y eliminar oficinas, en este apartado se recomienda mucho cuidado</p>
@@ -52,7 +48,7 @@ $isActiva=isActiva($name);
                 
                 <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card" style="width: 50%;">
-                    <img src="../../icons/support.jpg" class="card-img-top" alt="...">
+                    <img src="../../icons/informes-chicoAnime.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h1>informes</h1>
                         <p class="card-text">Desde esta paginas podras visualizar informes generales de las oficinas y de la tienda en general</p>
