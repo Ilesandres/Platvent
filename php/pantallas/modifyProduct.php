@@ -2,6 +2,13 @@
 
 <?php
 
+require_once '../controladores/isActiva.php';
+
+    $name='editar producto';
+
+    $isActiva=isActiva($name);
+
+
 require_once '../controladores/config.php';
 
 $idGet = $_GET['id'];

@@ -1,5 +1,10 @@
 
 <?php 
+require_once '../controladores/isActiva.php';
+
+$name='admin';
+
+$isActiva=isActiva($name);
     require_once '../layouts/headerAdmin.php';
 ?>
 <div class="container-fluid">
@@ -27,7 +32,7 @@
                         <p class="card-text">desde esta seccion podras editar las paginas habilitadas a los empleados de las diferentes oficinas</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success">Paginas</button>
+                        <button onclick="window.location.href='./paginasAdmin.php'" class="btn btn-success">Paginas</button>
                     </div>
                 </div>
             </div>

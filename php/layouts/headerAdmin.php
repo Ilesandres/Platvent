@@ -24,6 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../../css/admin.css">
     <script src="/alerts/alert_SwalsuccesProduct.js"></script>
+    <script src="/js/verifysesionstorage.js"></script>
 </head>
 <body>
     <header>

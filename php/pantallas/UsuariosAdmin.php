@@ -130,6 +130,29 @@ require_once '../layouts/headerAdmin.php';
                         <label for="usuario" class="form-label">Usuario</label>
                         <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario">
                     </div>
+                    <label for="rol">Rol</label>
+                    <select name="rol" class="form-select" id="rol" aria-label="Default select example">
+                        <option value="null" selected>selecciona una opcion</option>
+                        <?php
+                            
+                            require_once '../controladores/config.php';
+                            $conexion=conectarDB();
+                            $sqlCon="select *from rol";
+                            $sqlConRes=$conexion->query($sqlCon);
+                            if($sqlConRes->num_rows>0){
+                                while($row=$sqlConRes->fetch_assoc()){
+                                
+                                ?>
+                                
+                                <option value="<?=$row['idRol']?>"><?=$row['Rol']?></option>
+                                
+                                <?php 
+                                
+                                }
+                            }
+                            
+                        ?>
+                    </select>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
                         <textarea type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Descripción"></textarea>

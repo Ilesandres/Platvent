@@ -1,5 +1,12 @@
 <?php
 
+require_once '../controladores/isActiva.php';
+
+    $name='user';
+
+    $isActiva=isActiva($name);
+
+
   require_once '../controladores/config.php';
 
   $conn = conectarDB();

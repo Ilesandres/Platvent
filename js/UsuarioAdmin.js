@@ -10,6 +10,7 @@ function VerUsuario(idUsuario){
     let nombre=document.getElementById('nombre');
     let idUser1=document.getElementById('idUser');
     let usuario=document.getElementById('usuario');
+    let rol=document.getElementById('rol');
     let descripcion=document.getElementById('descripcion');
     let correo = document.getElementById('correo');
     let contraseña=document.getElementById('contraseña');
@@ -31,6 +32,7 @@ function VerUsuario(idUsuario){
             console.log(user)
             nombre.value = user.nombre;
             idUser1.value = user.idUsuario;
+            rol.value=user.idRol;
             usuario.value=  user.usuario;
             descripcion.value= user.descripcion;
             
@@ -56,6 +58,7 @@ function closeModaleditarUsuario(){
     let usuario=document.getElementById('usuario');
     let descripcion=document.getElementById('descripcion');
     let correo = document.getElementById('correo');
+    let rol=document.getElementById('rol');
     let contraseña=document.getElementById('contraseña');
     let isActive=document.getElementById('toggleSwitch');
     const switchValue = document.getElementById('switchValue');
@@ -65,6 +68,7 @@ function closeModaleditarUsuario(){
     usuario.value='';
     descripcion.value='';
     correo.value='';
+    rol.value='';
     contraseña.value='';
     isActive.checked=false;
     switchValue.textContent='false';
@@ -82,20 +86,21 @@ function closeModaleditarUsuario(){
 function editarUsuario(idUsuario){
     let idUser=document.getElementById('idUser').value;
     let estado=document.getElementById('toggleSwitch').checked;
-    
+    let rol=document.getElementById('rol').value;
     let nombre=document.getElementById('nombre').value;
     let usuario=document.getElementById('usuario').value;
     let descripcion=document.getElementById('descripcion').value;
     let correo = document.getElementById('correo').value;
     let contrasena=document.getElementById('contraseña').value;
     
-    if(idUser && nombre && usuario && descripcion && correo ){
+    if(idUser && nombre && usuario && descripcion && correo && rol!=='null'){
         let formdata=new FormData();
         formdata.append('idUser',idUser);
         formdata.append('nombre',nombre);
         formdata.append('usuario',usuario);
         formdata.append('descripcion',descripcion);
         formdata.append('correo',correo);
+        formdata.append('rol',rol);
         if(contrasena){
             formdata.append('contrasena',contrasena);
         }
@@ -110,7 +115,7 @@ function editarUsuario(idUsuario){
         .then((data)=>{
             console.log(data)
             Swal.fire({
-                icon: 'success',
+                icon: data.status,
                 title: 'Usuario editado',
                 text: data.message
             }).then((result)=>{

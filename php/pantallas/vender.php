@@ -1,4 +1,9 @@
 <?php
+            require_once '../controladores/isActiva.php';
+
+            $name='vender';
+            
+            $isActiva=isActiva($name);
             
             require_once '../controladores/config.php';
             $conexion=conectarDB();      

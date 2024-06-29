@@ -358,17 +358,19 @@ create table if not exists windows(
 
 
 insert into windows(`pestana`) values('inicio'),('login'),('registrar');
+insert into windows(`pestana`) values('user'),('vender'),('editar producto'),('buscarproducto');
 
 drop table if exists windowsActiva;
 
 create table if not exists windowsActiva(
 	idWindowsActiva int auto_increment primary key,
     idWindow int,
-    Activa boolean default 'false',
+    Activa boolean default false,
     foreign key(idwindow) references windows(id)
 );
 
 insert into windowsActiva(`idwindow`,`Activa`)values(1,true),(2,true),(3,true);
+insert into windowsActiva(idWindow, Activa) values(4,true),(5,true),(6,true),(7,true),( 8,true);
 
 alter table oficina add column idEncargado int default 1;
 
