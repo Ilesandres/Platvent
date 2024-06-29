@@ -1,9 +1,17 @@
 <?php 
 require_once '../controladores/isActiva.php';
 
-    $name='register';
+$name='register';
 
-    $isActiva=isActiva($name);
+session_start();
+$Rol=$_SESSION['Rol'];
+if($Rol!=='Admin'){
+  
+
+  $isActiva=isActiva($name);
+
+}
+    
 
 ?>
 

@@ -4,7 +4,14 @@ require_once '../controladores/isActiva.php';
 
 $name='admin';
 
-$isActiva=isActiva($name);
+session_start();
+$Rol=$_SESSION['Rol'];
+if($Rol!=='Admin'){
+  
+
+  $isActiva=isActiva($name);
+
+}
 
   require_once '../controladores/config.php';
 

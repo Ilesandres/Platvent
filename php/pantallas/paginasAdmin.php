@@ -23,7 +23,24 @@ if($paginasRes->num_rows>0){
         
         ?>
         <div class="card m-2" style="width: 18rem;">
-            <img src="/icons/carrito_tienda.png" class="card-img-top" alt="...">
+        <?php 
+        
+            if($row['Activa']==1){
+            ?>
+            <img src="/icons/active-page.jpg" class="card-img-top" alt="activa-img">
+            
+            <?php
+            
+            
+            }else{
+            ?>
+            <img src="/icons/desactive-page.jpg" class="card-img-top" alt="desactive-img">
+            
+            <?php 
+            
+            }
+        ?>
+            
             <div class="card-body">
                 <h5 class="card-title"><?=$row['pestana']?></h5>
                 <p class="card-text"><?=$row['ruta']?></p>

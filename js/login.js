@@ -113,4 +113,53 @@ function registrarse() {
   });
 };
 
-revisarCookies();
+function verifySesion(){
+  fetch('/php/controladores/verfificarSesion.php',{
+    method:'POST',
+    mode:'cors'
+  }).then(response=>response.json())
+  .then(async (data)=>{
+    console.log(data)
+    sessionStorage.setItem("user", data.user);
+    console.log("Datos introducidos correctamente");
+    sessionStorage.setItem("usuario", data.user+data.user);
+    sessionStorage.setItem("super", data.user);
+    
+    const rememberMe = document.getElementById('rememberMe').checked;
+    if (rememberMe) {
+          document.cookie = `username=${data.user}; path=/; max-age=${60 * 60 * 24 * 30}`; // Expira en 30 días
+      } else {
+          document.cookie = 'username=; path=/; max-age=0'; // Eliminar cookie
+      }
+  
+  
+    await Swal.fire({
+      title: "Bienvenido " + data.user,
+      text: "iniciando sesion",
+      icon: "success",
+      
+    });
+    sessionStorage.setItem('userclasId',data.id) ;
+
+    sessionStorage.setItem('xuclmt',data.idUser,',',data.user,',',data.user);
+    window.location.href = "/php/pantallas/user.php?numuser="+data.idUser+"&user"+data.user;
+
+    
+  })
+  .catch((err)=>{
+    console.log(err);
+    Swal.fire({
+      icon:'warning',
+      title:'iniciar sesion',
+      text:'iniciar sesion, por favor verifique bien sus datos, proporcionados por su administrados, si no puede acceder comuniquese con el mismo'
+      
+    })
+  })
+
+}
+
+document.addEventListener('DOMContentLoaded',function(e){
+  revisarCookies();
+  verifySesion();
+})
+

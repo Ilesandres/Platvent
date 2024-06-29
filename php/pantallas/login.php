@@ -4,7 +4,16 @@ require_once '../controladores/isActiva.php';
 
     $name='login';
 
-    $isActiva=isActiva($name);
+    session_start();
+    $Rol=$_SESSION['Rol'];
+    if($Rol!=='Admin'){
+      
+    
+      $isActiva=isActiva($name);
+    
+    }
+    
+
 
 ?>
 
@@ -23,7 +32,6 @@ require_once '../controladores/isActiva.php';
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
-
   <?php require_once '../layouts/loaderEspiral.php'; ?>
 
 <body class="body hidden">
