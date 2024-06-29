@@ -7,12 +7,9 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 
 ## 📋 Tabla de contenidos
 
-- [📦 Instalación](#-Instalación)
-- [🚀 Uso](#uso)
-- [📁 Estructura del Proyecto](#estructura-del-proyecto)
-- [✨ Características](#características)
-- [🤝 Contribuciones](#contribuciones)
-- [📝 Licencia](https://github.com/Ilesandres)
+- [✨ Características](#-características)
+- [📝🗒estructura del proyecto](#estructura-del-proyecto)
+  - [📝 Licencia](#-licencia)
 
 ## 📦 Instalación
 
@@ -24,22 +21,31 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 3. para uso movil se recomienda con el uso o orientacion horizontal
       ![orientacion movil](https://github.com/Ilesandres/img_Proyects/blob/main/orientacionmovilHorizontal.jpg)
 
+# ✨ Características
+* <b>Autenticacion de Usuarios :</b> Registro de inicio de sesion
+* <b>Gestion de productos :</b> añadir, editar y eliminar productos
+* <b>Funcionalidad de Ventas : </b> realiza ventas, modificalas y eliminalas e imprimelas, 
+* <b>REsponsive Design : </b> adaptado para dispositvos moviles y de escritorio(aun trabajando en esto)
+
 
 #  📝🗒estructura del proyecto
 
-   -platvent_2 <br>
-    -alerts <br>
-    -css <br>
-    -js<br>
-    -icons <br>
-    -img <br>
-    -json <br>
-    -php <br>
-    ....-controladores <br>
-    ....-pantallas <br>
-    -sql_consultas<br>
-    -user <br>
-    -bd-venta.sql <br>
-    -estructuracarpetas.txt <br>
-    -index.php <br>
-    -readme.md<br>
+  platvent_2  <br>
+├── alerts <br>
+├── css<br>
+├── js<br>
+├── icons<br>
+├── img<br>
+├── json<br>
+├── php<br>
+│   ├── controladores<br>
+│   └── pantallas<br>
+├── sql_consultas<br>
+├── user<br>
+├── bd-venta.sql<br>
+├── estructuracarpetas.txt<br>
+├── index.php<br>
+└── readme.md<br>
+
+## 📝 Licencia
+Este proyecto está bajo la Licencia MIT. Mira el archivo LICENSE para más detalles(aun no se encuentra añadido).
