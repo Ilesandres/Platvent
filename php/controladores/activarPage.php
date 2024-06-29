@@ -14,7 +14,8 @@ if(!empty($_POST['idPage'])){
     if($sqlRes){
         $response=array(
             'status' => 'success',
-            'message' => 'Se actualizo correctamente'
+            'message' => 'Se actualizo correctamente',
+            'estado'=>$checkValue
         );
         echo json_encode($response);
     }else{

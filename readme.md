@@ -7,7 +7,9 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 
 ## 📋 Tabla de contenidos
 
-- [✨ Características](#-características)
+
+
+- [✨Características](#características)
 - [📝🗒estructura del proyecto](#estructura-del-proyecto)
   - [📝 Licencia](#-licencia)
 
@@ -21,7 +23,7 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 3. para uso movil se recomienda con el uso o orientacion horizontal
       ![orientacion movil](https://github.com/Ilesandres/img_Proyects/blob/main/orientacionmovilHorizontal.jpg)
 
-# ✨ Características
+# ✨Características
 * <b>Autenticacion de Usuarios :</b> Registro de inicio de sesion
 * <b>Gestion de productos :</b> añadir, editar y eliminar productos
 * <b>Funcionalidad de Ventas : </b> realiza ventas, modificalas y eliminalas e imprimelas, 

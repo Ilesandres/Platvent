@@ -27,14 +27,14 @@ if($paginasRes->num_rows>0){
         
             if($row['Activa']==1){
             ?>
-            <img src="/icons/active-page.jpg" class="card-img-top" alt="activa-img">
+            <img id="imgCard<?=$row['id']?>" src="/icons/active-page.jpg" class="card-img-top" alt="activa-img">
             
             <?php
             
             
             }else{
             ?>
-            <img src="/icons/desactive-page.jpg" class="card-img-top" alt="desactive-img">
+            <img id="imgCard<?=$row['id']?>" src="/icons/desactive-page.jpg" class="card-img-top" alt="desactive-img">
             
             <?php 
             
