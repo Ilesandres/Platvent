@@ -5,13 +5,20 @@ require_once '../controladores/isActiva.php';
     $name='user';
 
     session_start();
-    $Rol=$_SESSION['Rol'];
-    if($Rol!=='Admin'){
-      
+    if(!empty($_SESSION['Rol'])){
+            $Rol=$_SESSION['Rol'];
     
-      $isActiva=isActiva($name);
+    if($Rol!=='Admin' || !$Rol){
     
+
+    $isActiva=isActiva($name);
+
     }
+    }else{
+        $isActiva=isActiva($name);
+    }
+
+
 
 
   require_once '../controladores/config.php';
@@ -29,7 +36,8 @@ require_once '../controladores/isActiva.php';
     <meta name="viewport" content="width=1024">
     <title>Sección Personal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <link rel="stylesheet" href="/css/user.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="/css/user.css">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/alerts/alert_SwalsuccesProduct.js"></script>

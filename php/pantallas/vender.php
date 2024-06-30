@@ -4,14 +4,18 @@
             $name='vender';
             
             session_start();
-            $Rol=$_SESSION['Rol'];
-            if($Rol!=='Admin'){
-              
+            if(!empty($_SESSION)){
+                    $Rol=$_SESSION['Rol'];
             
-              $isActiva=isActiva($name);
+            if($Rol!=='Admin' || !$Rol){
             
+        
+            $isActiva=isActiva($name);
+        
             }
-            
+            }else{
+                $isActiva=isActiva($name);
+            }
             require_once '../controladores/config.php';
             $conexion=conectarDB();      
             error_reporting(E_ALL);

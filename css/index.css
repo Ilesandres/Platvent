@@ -1,13 +1,13 @@
+/* Reset some basic elements */
 body, h1, h2, p, ul {
   margin: 0;
   padding: 0;
 }
 
-
 body {
   display: flex;
   flex-direction: column;
-  font-size: 50px;
+  font-size: 16px;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
@@ -58,42 +58,51 @@ ul, li {
   justify-content: center;
   align-items: center;
   font-family: "Courier New", Courier, monospace;
-  font-size: 50px;
-  background-color: aliceblue;
+  font-size: 2em;
+  background-color: #e0f7fa;
   padding: 20px 0;
+  color: #00796b;
 }
 
 nav ul {
   display: flex;
   flex-direction: row;
-  background-color: rgb(110, 118, 118);
+  background-color: #37474f;
   border-radius: 15px;
   padding: 10px;
   margin: 20px auto;
   width: 80%;
-
 }
 
 nav ul li {
-  padding: 20px;
-  list-style: none;
+  padding: 10px;
   margin: 5px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: black;
+  color: #fff;
   padding: 10px 20px;
   display: block;
 }
 
 nav ul li a:hover {
-  background-color: beige;
+  background-color: #00796b;
   cursor: pointer;
   transition: 0.8s;
   border-radius: 20px;
-  color: #000;
+  color: #fff;
+}
+
+nav ul li.search input {
+  border-radius: 15px;
+  padding: 5px;
+}
+
+nav ul li.search button {
+  border-radius: 15px;
+  border-color: #777;
 }
 
 .colum-3 {
@@ -129,7 +138,7 @@ nav ul li a:hover {
 
 h2 {
   font-size: 1.25em;
-  color: #333;
+  color: #00796b;
   margin: 12px 0;
 }
 
@@ -246,27 +255,3 @@ h4 b {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
-
-
-nav ul li{
-
-.search{
-height: 5px;
-}
-  input{
-    border-radius: 15px;
-  }
-  span{
-  
-    button{
-      border-radius: 15px;
-      border-color:#777;
-      i{
-      height: 1px;
-      }
-    }
-  }
-  
-}
-
-

@@ -45,6 +45,7 @@ function iniciarSecion() {
               sessionStorage.setItem("usuario", user+data.usuario);
               sessionStorage.setItem("super", data.usuario);
               
+              
               const rememberMe = document.getElementById('rememberMe').checked;
               if (rememberMe) {
                     document.cookie = `username=${user}; path=/; max-age=${60 * 60 * 24 * 30}`; // Expira en 30 días
@@ -64,7 +65,6 @@ function iniciarSecion() {
               sessionStorage.setItem('xuclmt',idUserres,',',user,',',data.usuario);
               window.location.href = "/php/pantallas/user.php?numuser="+idUserres+"&user"+user;
 
-              
       }else{
         Swal.fire({
           title: "Error",

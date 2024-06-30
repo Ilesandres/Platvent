@@ -1,8 +1,7 @@
 *{
 font-size: 15px;
+
 }
-
-
 
 table tbody td{
 
@@ -12,3 +11,34 @@ width: 50px;
 
 }
 
+header{
+    background: linear-gradient(#6b8d9b,rgba(78, 124, 199, 0.267),rgba(16, 109, 238, 0.4));
+    margin: 5px;
+    padding: 5px;
+    color: #fff;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #b29f7d, #d8c3a5, #f4e1d2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  /* Keyframes for gradient animation */
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
