@@ -139,7 +139,7 @@ function verifySesion(){
       icon: "success",
       
     });
-    sessionStorage.setItem('userclasId',data.id) ;
+    sessionStorage.setItem('userclasId',data.idUser) ;
 
     sessionStorage.setItem('xuclmt',data.idUser,',',data.user,',',data.user);
     window.location.href = "/php/pantallas/user.php?numuser="+data.idUser+"&user"+data.user;

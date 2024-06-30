@@ -31,9 +31,11 @@ function alertaproducto() {
             confirmButtonText: 'OK'
         }).then((result) => {
             // Realizar acciones después de hacer clic en "OK"
-            if (result.isConfirmed && status === 'success') {
+            if (result.isConfirmed && status ) {
                 // Si es exitoso, recargar la página o redirigir
-                window.location.href = window.location.pathname; // Recargar sin parámetros
+                let newUrl=`${window.location.origin}${window.location.pathname}`;
+                  history.replaceState(null,'',newUrl);  // Recargar sin parámetros
+               
             }
         });
     }   

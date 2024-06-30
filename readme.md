@@ -8,10 +8,13 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 ## 📋 Tabla de contenidos
 
 
-
+- [📦 instalacion](#📦-instalación)
 - [✨Características](#características)
 - [📝🗒estructura del proyecto](#estructura-del-proyecto)
   - [📝 Licencia](#-licencia)
+
+</br>
+##demas
 
 ## 📦 Instalación
 

@@ -68,5 +68,7 @@
     <footer class="text-center mt-4">
         <h1>Footer</h1>
     </footer>
+    
+    <script src="/js/admin.js"></script>
 </body>
 </html>

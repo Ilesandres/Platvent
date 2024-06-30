@@ -4,7 +4,7 @@
     
 try{
 session_start();
-    $user=$_SESSION['usuario'];
+         $user=$_SESSION['usuario'];
         $idUser=$_SESSION['user_id'];
         
     if($user && $idUser){

@@ -83,6 +83,7 @@ function verifyRol(){
 }
 
 
+
 document.addEventListener("DOMContentLoaded", (event) => {
   clasidhome();
   verifyRol();
