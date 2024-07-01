@@ -6,7 +6,7 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 ![Login](https://github.com/Ilesandres/img_Proyects/blob/main/store-proyect.png)
 
 
-<a href="(https://opposite-snapper-e2c.notion.site/Platvent-Store-c40ac8fd6c4e44069e7a1f825ba7c1a0" target="blank"><img align="center" src="https://github.com/Ilesandres/img_Proyects/blob/main/platvent_tareas_notion.png" alt="notion" height="100%" width="100%" /></a>
+<a href="https://opposite-snapper-e2c.notion.site/Platvent-Store-c40ac8fd6c4e44069e7a1f825ba7c1a0" target="blank"><img align="center" src="https://github.com/Ilesandres/img_Proyects/blob/main/platvent_tareas_notion.png" alt="notion" height="100%" width="100%" /></a>
 
 
 ## 📋 Tabla de contenidos
