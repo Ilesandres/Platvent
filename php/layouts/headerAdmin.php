@@ -35,6 +35,7 @@ if($Rol!=='Admin'){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <link rel="stylesheet" href="/css/user.css">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="/icons/favicon/admin.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/admin.css">
     <script src="/alerts/alert_SwalsuccesProduct.js"></script>
     <script src="/js/verifysesionstorage.js"></script>

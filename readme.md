@@ -5,10 +5,12 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 ![Tienda en linea SQl](https://github.com/Ilesandres/img_Proyects/blob/main/image.png)
 ![Login](https://github.com/Ilesandres/img_Proyects/blob/main/store-proyect.png)
 
+
+![lista de tareas y progresos en notion](https://www.notion.so/Platvent-Store-c40ac8fd6c4e44069e7a1f825ba7c1a0?pvs=4)
+
 ## 📋 Tabla de contenidos
 
 
-- [📦 instalacion](#📦-instalación)
 - [✨Características](#características)
 - [📝🗒estructura del proyecto](#estructura-del-proyecto)
   - [📝 Licencia](#-licencia)
