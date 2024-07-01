@@ -7,6 +7,7 @@ Este es un proyecto de tienda a escala media que aun se encuentra en desarrollo 
 
 
 ![lista de tareas y progresos en notion](https://github.com/Ilesandres/img_Proyects/blob/main/platvent_tareas_notion.png);
+<a href="https://www.linkedin.com/in/andres-iles-ab9415265/" target="blank"><img align="center" src="https://user-images.githubusercontent.com/88904952/234979284-68c11d7f-1acc-4f0c-ac78-044e1037d7b0.png" alt="linkedin" height="50" width="50" /></a>
 ![tareas en notion Verificar](https://opposite-snapper-e2c.notion.site/Platvent-Store-c40ac8fd6c4e44069e7a1f825ba7c1a0);
 
 ## 📋 Tabla de contenidos
