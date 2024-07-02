@@ -41,7 +41,7 @@
                         <p class="card-text">desde esta seccion podras editar, crear y eliminar oficinas, en este apartado se recomienda mucho cuidado</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success">Oficinas</button>
+                        <button onclick="window.location.href='./oficinasAdmin.php'" class="btn btn-success">Oficinas</button>
                     </div>
                 </div>
                </div> 

@@ -8,7 +8,8 @@ function sesionStorage() {
 
         if (currentPath !== '/php/pantallas/user.php' && currentPath !=='/php/pantallas/modifyProduct.php' && currentPath!='/php/pantallas/buscarProduct.php'
         && currentPath !='/php/pantallas/vender.php' && currentPath !=='/php/pantallas/perfil.php' && currentPath!=='/php/pantallas/admin.php'
-        && currentPath !=='/php/pantallas/UsuariosAdmin.php' && currentPath !=='/php/pantallas/paginasAdmin.php'
+        && currentPath !=='/php/pantallas/UsuariosAdmin.php' && currentPath !=='/php/pantallas/paginasAdmin.php' && currentPath!=='/php/pantallas/oficinasAdmin.php'
+        
         ) {
 
        

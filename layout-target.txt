@@ -1,0 +1,21 @@
+<div class="container-sm">
+    <div class="row">
+        <div class="card m-2" style="width: 18rem;">
+            <img id="imgCard<?=$row['id']?>" src="/icons/active-page.jpg" class="card-img-top" alt="activa-img">
+            <div class="card-body">
+                <h5 class="card-title"><?=$row['pestana']?></h5>
+                <p class="card-text"><?=$row['ruta']?></p>
+                <div class="mb-3">
+                    <div class="switch-container">
+                        <label for="switch"> pagina Activa</label>
+                        <label class="switch">
+                            <input name="switch" checked type="checkbox" id="toggleSwitch" onchange="handleToggleChange(this,<?=$row['id']?>)">
+                            <span class="slider"></span>
+                        </label>
+                        <p id="switchValue<?=$row['id']?>" value="activo">activo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
