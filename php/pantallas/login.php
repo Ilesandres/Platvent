@@ -1,5 +1,6 @@
 
 <?php 
+
 require_once '../controladores/isActiva.php';
 
     $name='login';
@@ -11,11 +12,11 @@ require_once '../controladores/isActiva.php';
     if($Rol!=='Admin' || !$Rol){
     
 
-    $isActiva=isActiva($name);
+      $isActiva=isActiva($name);
 
     }
     }else{
-        $isActiva=isActiva($name);
+      isActiva($name);
     }
     
 

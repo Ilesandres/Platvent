@@ -206,7 +206,7 @@ CREATE TABLE `usuario` (
   `fecha_nacimiento` DATE DEFAULT NULL,
   `idMunicipio` INT(11) DEFAULT NULL,
   `idRol` INT(11) DEFAULT 2,
-  `descripcion` TINYTEXT DEFAULT 'sin descripcion',
+  `descripcion` TINYTEXT,
   `telefono` VARCHAR(15) DEFAULT '3',
   `idOficina` INT(11) DEFAULT 1,
   PRIMARY KEY (`idUsuario`),
@@ -225,7 +225,12 @@ CREATE TABLE `usuario` (
 -- ORDER BY:  `idUsuario`
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`idUsuario`, `usuario`, `correo`, `contraseña`, `nombre`, `fecha_nacimiento`, `idMunicipio`, `idRol`, `descripcion`, `telefono`) VALUES (1,'Ilesandres6','ilesandres6@gmail.com','1127071568','Andres Iles','2005-07-12',1,1,'sin descripcion','3'),(27,'Ilesandres6','ilesandre6@gmail.com','$2y$10$9OJavNHi5gDh8PAcgrLNbu5HLSp61I.iGALOeagOYgVNUYn3yAH3m','Andres','2005-07-12',1,2,'sin descripcion','3'),(28,'Platvent','wemase5629@cnurbano.com','$2y$10$J7xIYoTvLQlODfJKWIeU8eL/WSxg7BEgyn1xx.SrKcQ.6IY6qlR52','Platvent','2004-04-12',1,2,'sin descripcion','3'),(29,'Platvent','wemase5629@cnurbano.com','$2y$10$oYLLzr8rslPP/t0hszI9IOwhfMZ.nAVqjTzHhq9z7Wllm51ZZH6Au','Platvent','1886-06-02',4,2,'sin descripcion','3');
+INSERT INTO `usuario` (`idUsuario`, `usuario`, `correo`, `contraseña`, `nombre`, `fecha_nacimiento`, `idMunicipio`, `idRol`, `descripcion`, `telefono`) VALUES 
+(1,'Ilesandres6','ilesandres6@gmail.com','1127071568','Andres Iles','2005-07-12',1,1,'sin descripcion','3'),
+(27,'Ilesandres6','ilesandre6@gmail.com','$2y$10$9OJavNHi5gDh8PAcgrLNbu5HLSp61I.iGALOeagOYgVNUYn3yAH3m','Andres','2005-07-12',1,1,'sin descripcion','3'),
+(28,'Platvent','wemase5629@cnurbano.com','$2y$10$J7xIYoTvLQlODfJKWIeU8eL/WSxg7BEgyn1xx.SrKcQ.6IY6qlR52','Platvent','2004-04-12',1,2,'sin descripcion','3'),
+(29,'Platvent','wemase5629@cnurbano.com','$2y$10$oYLLzr8rslPP/t0hszI9IOwhfMZ.nAVqjTzHhq9z7Wllm51ZZH6Au','Platvent','1886-06-02',4,2,'sin descripcion','3'),
+(30,'Admin','wemase5629@cnurbano.com','$2y$10$vWSB/4zm1.o9K2Ar82lc7.u46E.n.tE.Vl2ekmRBsCHnG93ixXhi6','Admin','1886-06-02',4,1,'sin descripcion','3');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 --
@@ -235,7 +240,7 @@ DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(150) NOT NULL,
-  descripcion_complete tinytext default 'sin descripcion completa',
+  descripcion_complete tinytext ,
   `stock` int(20) NOT NULL DEFAULT 5,
   `unidadMedida` varchar(25) NOT NULL,
   `saldo` double(11,0) NOT NULL,
@@ -378,4 +383,4 @@ alter table oficina add constraint fk_Encargado foreign key(idEncargado) referen
 
 alter table usuario add column isActivo boolean default true;
 
-
+alter table usuario add column CiNit varchar(15);

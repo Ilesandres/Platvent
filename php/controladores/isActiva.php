@@ -1,13 +1,21 @@
 <?php
 
-require_once 'config.php';
+
 
 
 
 function isActiva($names){
 
-        $conn=conectarDB();
+
+        
         $name = strtolower($names);
+        if($name!=='inicio'){
+            require_once '../controladores/config.php';
+        }else{
+            require_once 'php/controladores/config.php';
+        }
+        $conn=conectarDB();
+        
         $sql="select *from windows
             inner join windowsActiva on windows.id=windowsActiva.idWindow
             where windows.pestana='$name'";
@@ -17,7 +25,7 @@ function isActiva($names){
                 $active=$sqlRes->fetch_assoc();
                 $isActive=$active['Activa'];
                 
-                if($isActive!=true){
+                if($isActive!=1){
                     header('location: ../../php/pantallas/mantenimiento.php');
                 }
             }

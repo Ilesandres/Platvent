@@ -26,18 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
             if (password_verify($contraseña, $contraseña_hash)) {
-              
+               session_start();
+                $_SESSION['user_id']=$row['idUsuario'];
+                $_SESSION['usuario']=$row['usuario'];
+                
                 $login_success = true;
                 $response = array(
                     'status' => 'success',
                     'message' => 'Inicio de sesión exitoso',
                     'iduser' => $row['idUsuario'],
                     'Activo' =>$row['isActivo'],
+                    'usersession'=>$_SESSION['usuario'],
+                    'userIDSession'=>$_SESSION['user_id'],
                     'usuario' => $usuario
                 );
-                session_start();
-                $_SESSION['user_id']=$row['idUsuario'];
-                $_SESSION['usuario']=$row['usuario'];
+               
                 echo json_encode($response);
                 break; // Salir del bucle ya que hemos encontrado una coincidencia exitosa
             }

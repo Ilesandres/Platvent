@@ -63,7 +63,7 @@ function iniciarSecion() {
               sessionStorage.setItem('userclasId',idUserres) ;
 
               sessionStorage.setItem('xuclmt',idUserres,',',user,',',data.usuario);
-              window.location.href = "/php/pantallas/user.php?numuser="+idUserres+"&user"+user;
+              window.location.href = "/php/pantallas/user.php";
 
       }else{
         Swal.fire({

@@ -10,11 +10,11 @@ require_once './php/controladores/isActiva.php';
     if($Rol!=='Admin' || !$Rol){
     
 
-    $isActiva=isActiva($name);
+     $Activa=isActiva($name);
 
     }
     }else{
-        $isActiva=isActiva($name);
+        isActiva($name);
     }
 
 

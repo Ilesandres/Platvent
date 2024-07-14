@@ -463,7 +463,7 @@ if(factura){
             </div>
         `;
 
-        document.body.insertAdjacentHTML('beforeend', modalHTML1);s
+        document.body.insertAdjacentHTML('beforeend', modalHTML1);
         
     
         const modalElement = new bootstrap.Modal(document.getElementById('cantidadproduct'));
