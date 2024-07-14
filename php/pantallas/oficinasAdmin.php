@@ -28,7 +28,7 @@ require_once '../layouts/headerAdmin.php';
             </div>
 
         <div class="card m-2" style="width: 18rem;">
-            <img id="imgCard<?= $row['id'] ?>" src="/icons/active-page.jpg" class="card-img-top" alt="activa-img">
+            <img id="imgCard<?= $row['id'] ?>" src="/icons/<?=$img?>" class="card-img-top" alt="activa-img">
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text"></p>

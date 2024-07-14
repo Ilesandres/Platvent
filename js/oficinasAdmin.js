@@ -3,7 +3,7 @@ document.getElementById('home').addEventListener('click',function(e){
 })
 
 
-//funcion activar y desactivar la oficina
+//funcion activar y desactivar la oficina ys sus usuarios
 function handleToggleChange(checkbox,idOficina) {
     
     let idPages=idOficina;
@@ -19,7 +19,9 @@ function handleToggleChange(checkbox,idOficina) {
     }
     let  check=document.getElementById('toggleSwitch'+idOficina);
     const switchValue = document.getElementById('switchValue'+idOficina);
+    let img=document.getElementById('imgCard'+idOficina);
     let text1= switchValue.textContent=='activo'? 'deshabilitaras':'activaras';
+    
     let textButton= switchValue.textContent=='activo'? 'Deshabilitar':'Activar';
     const state=document.getElementById('estado'+idOficina);
 
@@ -34,10 +36,34 @@ function handleToggleChange(checkbox,idOficina) {
         confirmButtonText: 'Si, '+textButton,
         }).then((result) => {
         if (result.isConfirmed) {
-            
-            switchValue.textContent = checkbox.checked ? 'activo' : 'desactivado';
-            state.textContent=switchValue.textContent=='activo' ? 'activado' : 'desactivado';
+        let formdata=new FormData();;
+        formdata.append('idOficina',idOficina);
+        formdata.append('estado',checkValue);
+            fetch('/php/controladores/desactivarOficina.php',{
+                method:'POST',
+                body:formdata,
+                mode:'cors'
+            }).then(response=>response.json())
+            .then((data)=>{
+                console.log(data)
+                Swal.fire({
+                    title: 'Oficina '+mostrar,
+                    text: 'Se ha '+mostrar+' la oficina correctamente',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+                
+                switchValue.textContent = checkbox.checked ? 'activo' : 'desactivado';
+                state.textContent=switchValue.textContent=='activo' ? 'activado' : 'desactivado';
+                img.src=switchValue.textContent=='activo'? '/icons/active-page.jpg': '/icons/oficinas-mapa.jpg';
             console.log(check.checked)
+            })
+            .catch((err)=>{
+                console.log(err);
+                check.checked=switchValue.textContent=='activo' ?  true : false;
+            })
+            
             
         }else if(result.isDismissed){
             check.checked=switchValue.textContent=='activo' ?  true : false;
