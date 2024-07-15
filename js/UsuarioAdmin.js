@@ -14,6 +14,7 @@ function VerUsuario(idUsuario){
     let descripcion=document.getElementById('descripcion');
     let correo = document.getElementById('correo');
     let contraseña=document.getElementById('contraseña');
+    let Cinit=document.getElementById('CiNit');
     let isActive=document.getElementById('toggleSwitch');
     const switchValue = document.getElementById('switchValue');
     let activo;
@@ -35,6 +36,7 @@ function VerUsuario(idUsuario){
             rol.value=user.idRol;
             usuario.value=  user.usuario;
             descripcion.value= user.descripcion;
+            Cinit.value=user.CiNit;
             
             if(user.isActivo=='1'){
                 activo=true;
@@ -59,6 +61,7 @@ function closeModaleditarUsuario(){
     let descripcion=document.getElementById('descripcion');
     let correo = document.getElementById('correo');
     let rol=document.getElementById('rol');
+    let Cinit=document.getElementById('CiNit');
     let contraseña=document.getElementById('contraseña');
     let isActive=document.getElementById('toggleSwitch');
     const switchValue = document.getElementById('switchValue');
@@ -69,6 +72,7 @@ function closeModaleditarUsuario(){
     descripcion.value='';
     correo.value='';
     rol.value='';
+    Cinit.value='';
     contraseña.value='';
     isActive.checked=false;
     switchValue.textContent='false';
@@ -92,8 +96,9 @@ function editarUsuario(idUsuario){
     let descripcion=document.getElementById('descripcion').value;
     let correo = document.getElementById('correo').value;
     let contrasena=document.getElementById('contraseña').value;
+    let CiNit=document.getElementById('CiNit').value;
     
-    if(idUser && nombre && usuario && descripcion && correo && rol!=='null'){
+    if(idUser && nombre && usuario && descripcion && correo && rol!=='null'&& CiNit ){
         let formdata=new FormData();
         formdata.append('idUser',idUser);
         formdata.append('nombre',nombre);
@@ -101,7 +106,8 @@ function editarUsuario(idUsuario){
         formdata.append('descripcion',descripcion);
         formdata.append('correo',correo);
         formdata.append('rol',rol);
-        if(contrasena){
+        formdata.append('CiNit',CiNit);
+        if(contrasena && contrasena.trim()!==''){
             formdata.append('contrasena',contrasena);
         }
           
@@ -125,7 +131,7 @@ function editarUsuario(idUsuario){
             })
         })
         .catch((err)=>{
-            //console.log(err);
+            console.log(err);
         })
         
         //console.log(idUser+' '+estado)

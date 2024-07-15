@@ -141,6 +141,12 @@ require_once '../layouts/headerAdmin.php';
 
                     </div>
                     <div class="mb-3">
+                        <label for="CiNit" class="form-label">CiNit</label>
+                        <input type="text" id="CiNit"  name="CiNit" class="form-control" placeholder="CiNit">
+
+                    </div>
+                    
+                    <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
                     </div>
