@@ -76,16 +76,19 @@ function enviarOficina(){
         .then((data)=>{
             console.log(data)
             let modal=bootstrap.Modal.getInstance(modalSearch);
-            modal.hide();
+            
             Swal.fire({
-                
-                icon: 'success',
-                title: 'Oficina agregada',
-                text: 'Se ha agregado la oficina correctamente',
+                icon: data.status,
+                title: data.status,
+                text: data.message,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             }).then(() => {
-                location.reload();
+                if(data.status=='success'){
+                     window.location.reload();
+                     modal.hide();
+                }
+                
             });
         })
         .catch((err)=>{
@@ -264,7 +267,6 @@ let Empleado=document.getElementById('NitEmpleado').value;
             mode: 'cors'
         }).then(response=>response.json())
         .then((response)=>{
-            console.log(response);
             let empleado=document.getElementById('encargado');
             empleado.value=response.data.ciNit+'-'+response.data.nombre;
             document.getElementById('idEncargado').value=response.data.idUsuario;
@@ -458,9 +460,14 @@ function editarOficina(idOficina){
 
 
 function showLoading() {
-    document.getElementById('loading').style.display = 'block';
+    let load=document.getElementById('loading');
+    load.style.display = 'flex';
+    load.style.justifyContent='center';
+    load.style.alignItems='center';
+    document.getElementById('container1').style.display='none';
 }
 
 function hideLoading() {
     document.getElementById('loading').style.display = 'none';
+    document.getElementById('container1').style.display= 'block'
 }

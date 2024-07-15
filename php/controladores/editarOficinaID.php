@@ -2,6 +2,7 @@
 
 require_once './config.php';
 $conexion=conectarDB();
+require_once './verifySelectRol.php';
 
 
 if(!empty($_POST['nombre']) && !empty($_POST['direccion']) && !empty($_POST['idMunicipio']) && !empty($_POST['idEncargado']) && !empty($_POST['idOficina'])  ){
@@ -24,11 +25,21 @@ if(!empty($_POST['nombre']) && !empty($_POST['direccion']) && !empty($_POST['idM
             $sql="update oficina set nombre='$nombre',direccion='$direccion',idMunicipio=$idMunicipio, idEncargado='$idEncargado' where oficina.id='$idOficina'";
             $sqlRes=$conexion->query($sql);
             if($sqlRes){
-                $response=array(
-                'status' => 'success',
-                'message' => 'Registro exitoso',
-                'nombre' => $nombre,
-            );
+                $accept=verifyrolUserID($idEncargado);
+                if($accept){
+                    $response=array(
+                        'status' => 'success',
+                        'message' => 'Registro exitoso',
+                        'nombre' => $nombre,
+                    );
+                }else{
+                    
+                    $response=array(
+                    'status' => 'error',
+                    'message' => 'No tiene permisos para realizar esta acción',
+                    );
+                }
+                
             }
             
         }else{

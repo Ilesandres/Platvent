@@ -5,7 +5,10 @@ require_once '../layouts/headerAdmin.php';
 ?>
 <link rel="stylesheet" href="/css/checkboxActive.css">
 
-<div class="container-sm">
+<div class="p-3 mb-2 bg-warning text-dark" id="loading"  style="display: none;">
+                <p>Cargando...</p>
+</div>
+<div id="container1" class="container-sm">
     <div class="row">
         <?php
     require_once '../controladores/config.php';
@@ -23,9 +26,7 @@ require_once '../layouts/headerAdmin.php';
                 $img='active-page.jpg';
             }
             ?>
-            <div class="p-3 mb-2 bg-warning text-dark m-auto" id="loading"  style="display: none;">
-                <p>Cargando...</p>
-            </div>
+            
 
         <div class="card m-2" style="width: 18rem;">
             <img id="imgCard<?= $row['id'] ?>" src="/icons/<?=$img?>" class="card-img-top" alt="activa-img">

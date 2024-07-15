@@ -4,7 +4,7 @@
     require_once '../layouts/headerAdmin.php';
 ?>
 <div class="container-fluid">
-        <div class="row" style="display:flex; justify-content: center;">
+        <div class="row" style="display:flex; justify-content: center; ">
 
          
             
