@@ -1,7 +1,7 @@
 const seS = sessionStorage.getItem("user");
 
 if (seS) {
-  console.log(seS);
+  //console.log(seS);
   window.location.href = "/php/pantallas/user.php";
 }
 
@@ -10,7 +10,7 @@ function iniciarSecion() {
   const password = document.getElementById("password").value;
   const datos = { user, password };
 
-  console.log("user : " + user + " password " + password);
+  //console.log("user : " + user + " password " + password);
   fetch("/php/controladores/loginverify.php", {
     method: "POST",
     headers: {
@@ -21,9 +21,9 @@ function iniciarSecion() {
     .then((response) => response.json())
     .then(async (data) => {
 
-      console.log("Respuesta del servidor", data);
+      //console.log("Respuesta del servidor", data);
       let idUserres=data.iduser;
-      console.log(idUserres,'  user');
+      //console.log(idUserres,'  user');
       const responseDiv = document.createElement("div");
       responseDiv.style.position = "absolute";
       responseDiv.style.fontSize = "10px";
@@ -41,7 +41,7 @@ function iniciarSecion() {
       if (data.status == "success") {
             if(data.Activo==true){
                sessionStorage.setItem("user", user);
-              console.log("Datos introducidos correctamente");
+              //console.log("Datos introducidos correctamente");
               sessionStorage.setItem("usuario", user+data.usuario);
               sessionStorage.setItem("super", data.usuario);
               
@@ -79,7 +79,7 @@ function iniciarSecion() {
 
 
       } else {
-        console.log("error " + data);
+        //console.log("error " + data);
         Swal.fire({
           title: "Datos incorrectos",
           text: "verifica tus datos",
@@ -99,7 +99,7 @@ function iniciarSecion() {
 }
 
 function registrarse() {
-  console.log("registrandose");
+  //console.log("registrandose");
 }
 
  function revisarCookies() {
@@ -119,9 +119,9 @@ function verifySesion(){
     mode:'cors'
   }).then(response=>response.json())
   .then(async (data)=>{
-    console.log(data)
+    //console.log(data)
     sessionStorage.setItem("user", data.user);
-    console.log("Datos introducidos correctamente");
+    //console.log("Datos introducidos correctamente");
     sessionStorage.setItem("usuario", data.user+data.user);
     sessionStorage.setItem("super", data.user);
     
@@ -147,7 +147,7 @@ function verifySesion(){
     
   })
   .catch((err)=>{
-    console.log(err);
+    //console.log(err);
     Swal.fire({
       icon:'warning',
       title:'iniciar sesion',

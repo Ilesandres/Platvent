@@ -189,6 +189,7 @@ CREATE TABLE `rol` (
 
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
 INSERT INTO `rol` (`idRol`, `Rol`, `descripcion`, `funciones`) VALUES (1,'Admin','admin general de la tienda','empleado'),(2,'user','usuario comun de la tienda','empleado');
+insert into rol(Rol,descripcion,funciones)values('Encargado','oficios SemiAdmins','administra una sede');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 
 --

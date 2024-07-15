@@ -5,7 +5,7 @@ document.getElementById('home').addEventListener('click',function(e){
 
 document.addEventListener('DOMContentLoaded',function(e){
     e.preventDefault();
-    console.log(1235)
+    //console.log(1235)
 })
 
 function handleToggleChange(checkbox,idPage) {
@@ -24,7 +24,7 @@ function handleToggleChange(checkbox,idPage) {
     let formdata=new FormData();
     formdata.append('idPage',idPage);
     formdata.append('checkValue',checkValue);
-     console.log(idPage+' '+checkValue);
+     //console.log(idPage+' '+checkValue);
      
      
     if(idPages){
@@ -35,7 +35,7 @@ function handleToggleChange(checkbox,idPage) {
             mode:'cors'
         }).then(response=>response.json())
         .then((response)=>{
-            console.log(response)
+            //console.log(response)
             if(response.status=='success'){
                 Swal.fire({
                     title:response.status, 
@@ -86,7 +86,7 @@ function handleToggleChange(checkbox,idPage) {
             
         })
         .catch((err)=>{
-            console.log(err);
+            //console.log(err);
         })
     }
     

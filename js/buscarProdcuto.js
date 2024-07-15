@@ -4,7 +4,7 @@ function buscar(){
 
 let search =document.getElementById('search').value;
 
-console.log(search);
+//console.log(search);
 
 if(search!==null && search!==''){
     window.location.href ='/php/pantallas/busqueda.php?id='+search;

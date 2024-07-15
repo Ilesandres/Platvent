@@ -26,10 +26,10 @@ function VerUsuario(idUsuario){
          mode: 'cors'
     }).then(response=>response.json())
     .then((data)=>{
-        console.log(data)
+        //console.log(data)
         if(data.status=='succes'){
             let user=data.data;
-            console.log(user)
+            //console.log(user)
             nombre.value = user.nombre;
             idUser1.value = user.idUsuario;
             rol.value=user.idRol;
@@ -47,7 +47,7 @@ function VerUsuario(idUsuario){
         }
     })
     .catch((err)=>{
-        console.log(err)
+        //console.log(err)
     })
     
 }
@@ -113,7 +113,7 @@ function editarUsuario(idUsuario){
             mode:'cors'
         }).then(response=>response.json())
         .then((data)=>{
-            console.log(data)
+            //console.log(data)
             Swal.fire({
                 icon: data.status,
                 title: 'Usuario editado',
@@ -125,10 +125,10 @@ function editarUsuario(idUsuario){
             })
         })
         .catch((err)=>{
-            console.log(err);
+            //console.log(err);
         })
         
-        console.log(idUser+' '+estado)
+        //console.log(idUser+' '+estado)
     }else{
         Swal.fire({
             title: 'Error',

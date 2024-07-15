@@ -29,7 +29,7 @@ function productosDisponibles(){
         method:'post',
     }).then(response=>response.json())
     .then((data)=>{
-        console.log(data);
+        //console.log(data);
         products=data.products;
         contenedor.innerHTML='';
         products.forEach(producto => {
@@ -87,7 +87,7 @@ function productosDisponibles(){
             
         });
         loaderProductos();
-    }).catch((err)=>console.log(err));
+    }).catch((err)=>//console.log(err));
 }
 
 
@@ -100,7 +100,7 @@ function registrarCliente() {
     if (nombre && identificacion) {
     
         const datos = { nombre, apellido, identificacion };
-        console.log(datos)
+        //console.log(datos)
 
         fetch('/php/controladores/nuevoCliente.php', {
             method: 'POST',
@@ -116,7 +116,7 @@ function registrarCliente() {
             return response.json();
         })
         .then((data) => {
-            console.log("Respuesta del servidor", data);
+            //console.log("Respuesta del servidor", data);
             if (data.status === 'success') {
                 Swal.fire({
                     title: 'Success',
@@ -181,7 +181,7 @@ if(!estadoFactura || estadoFactura!=='null'){
         formdata.append('idVendedor',idVendedor)
         formdata.append('estadofactura',estadoFactura)
 
-        console.log(IDCliente,  colID);
+        //console.log(IDCliente,  colID);
         if(IDCliente && colID){
             fetch('/php/controladores/crearFactura.php',{
                 method: 'POST',
@@ -198,7 +198,7 @@ if(!estadoFactura || estadoFactura!=='null'){
                 })
 
             })
-            .catch((err)=>{console.log('error '+err)})
+            .catch((err)=>{//console.log('error '+err)})
         }
     
     }else{
@@ -307,7 +307,7 @@ function añadirID(id){
                 valorData.value=data.nombre+' '+data.apellido+' -- '+data.ciNit;
                 crearFactura(data.ciNit, data.colCid);
             })
-            .catch((err)=>{console.log('error : '+err)})
+            .catch((err)=>{//console.log('error : '+err)})
         
         }
     }else{
@@ -356,7 +356,7 @@ document.getElementById('IDcliente').addEventListener('keyup', function(e){
                 lista.innerHTML=data;
                 
             })
-            .catch((err)=>{console.log('ERROR',err)});
+            .catch((err)=>{//console.log('ERROR',err)});
         
         }
     
@@ -547,10 +547,10 @@ function loadProductosRestantes(){
                 contenedor.appendChild(row);
             });
             
-            console.log(data);
+            //console.log(data);
             
             
-        }).catch((err)=>console.log(err));
+        }).catch((err)=>//console.log(err));
     }else{
         Swal.fire({
             title:'error',
@@ -583,10 +583,10 @@ function agregarproducto(IDproduct){
 
 
 
-console.log('cantidad : '+cantidad);
+//console.log('cantidad : '+cantidad);
 let idFactura=document.getElementById('idfactura').value;
 let productID=IDproduct;
-console.log("agregando producto "+productID);
+//console.log("agregando producto "+productID);
 
 let formdata= new FormData();
 formdata.append('idProduct',productID);
@@ -601,7 +601,7 @@ if(idFactura && cantidad){
     mode:'cors',
     }).then(response=>response.json())
     .then((data)=>{
-    console.log(data);
+    //console.log(data);
     if(data.message=='sinStock'){
         Swal.fire({
         icon: 'error',
@@ -623,7 +623,7 @@ if(idFactura && cantidad){
         
     })
     .catch((err)=>{
-        console.log(err);
+        //console.log(err);
     })
     
     
@@ -653,10 +653,10 @@ formdata.append('total',Total);
         mode:'cors',
     }).then(response=>response.json())
     .then((factura)=>{
-        console.log(factura);
+        //console.log(factura);
     })
     .catch((err)=>{
-        console.log(err);
+        //console.log(err);
     })
 
 }
@@ -673,7 +673,7 @@ function loadProductosAdd(){
             mode:'cors',
         }).then(response=>response.json())
         .then((data)=>{
-            console.log(data);
+            //console.log(data);
             let productos=data.productos;
             const tableProducts=document.getElementById('table-productos-añadidos');
             let totalProducts=document.getElementById('total');
@@ -730,7 +730,7 @@ function loadProductosAdd(){
             
         })
         .catch((err)=>{
-        console.log(err);
+        //console.log(err);
         })
     }
    
@@ -742,7 +742,7 @@ document.getElementById('searchInput').addEventListener('keyup',function(e){
     let showProducts=document.getElementById('listProducts');
     let formdata= new FormData();
     formdata.append('search',valorSearch);
-    console.log(valorSearch);
+    //console.log(valorSearch);
     if(valorSearch){
         fetch('/php/controladores/buscarproductoName.php',{
             
@@ -751,7 +751,7 @@ document.getElementById('searchInput').addEventListener('keyup',function(e){
             mode:'cors'
         }).then(response=>response.json())
         .then((data) => {
-        console.log(data);
+        //console.log(data);
         showProducts.innerHTML='';
             data.products.forEach(producto => {
                  const row = document.createElement('tr');
@@ -782,7 +782,7 @@ document.getElementById('searchInput').addEventListener('keyup',function(e){
             });
             
         })
-        .catch((err)=>{console.log('ERROR'+err)});
+        .catch((err)=>{//console.log('ERROR'+err)});
         
     }
     
@@ -792,7 +792,7 @@ document.getElementById('searchInput').addEventListener('keyup',function(e){
 
 function imrpimirFactura(){
 let factura=document.getElementById('idfactura').value;
-console.log(factura);
+//console.log(factura);
 if(factura){
     print();
 }else{
@@ -852,7 +852,7 @@ function cargarDatosFactura(){
     let clienteNombre=document.getElementById('nombrecliente');
     let formdata =new FormData();
     formdata.append('idFactura',idFactura);
-    console.log(idFactura);
+    //console.log(idFactura);
     
     fetch('/php/controladores/loadFactura.php',{
         method:'POST',
@@ -873,7 +873,7 @@ function cargarDatosFactura(){
                 });
         })
         .catch((err)=>{
-            console.log(err);
+            //console.log(err);
         })
 };
 
@@ -900,7 +900,7 @@ function eliminarProductoAñadido(idProduct){
                     mode:'cors',
                 }).then(response=>response.json())
                 .then((data)=>{
-                    console.log(data);
+                    //console.log(data);
                     if(data.status=='success'){
                         loadProductosAdd();
                         loadProductosRestantes();
@@ -908,7 +908,7 @@ function eliminarProductoAñadido(idProduct){
                     }
                     
                 })
-                .catch((err)=>console.log(err))
+                .catch((err)=>//console.log(err))
                 
                 }
             })
@@ -966,7 +966,7 @@ function editarCantidadProducto(id){
         bsModal.hide();
     }
     
-    console.log(cantidad);
+    //console.log(cantidad);
     
     // Espera a que el modal se oculte antes de eliminarlo del DOM
     modalElement.addEventListener('hidden.bs.modal', function(event) {
@@ -986,7 +986,7 @@ function editarCantidadProducto(id){
             mode:'cors'
         }).then(response=>response.json())
         .then((data)=>{
-            console.log(data);
+            //console.log(data);
             
             Swal.fire({
                 icon: 'success',
@@ -1038,7 +1038,7 @@ document.getElementById('searchFactura').addEventListener('keyup',function(e){
             tableBody.innerHTML=' ';
            
 
-            console.log(data)
+            //console.log(data)
             if(data.status=="success"){
                 let facturas=data.facturas;
                 const row = document.createElement('tr');
@@ -1128,7 +1128,7 @@ document.getElementById('searchFactura').addEventListener('keyup',function(e){
                 
             
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>//console.log(err))
     }
     
 });
@@ -1161,7 +1161,7 @@ formdata.append('idfactura',IDFactura);
             mode: 'cors'
         }).then(response=>response.json())
         .then((data)=>{
-            console.log(data);
+            //console.log(data);
             Swal.fire({
                 icon: 'success',
                 title: 'Factura eliminada',
@@ -1171,7 +1171,7 @@ formdata.append('idfactura',IDFactura);
             searchFactura.value='';
             tableBody.innerHTML='';
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>//console.log(err))
         
     }else if(result.isDismissed){
         Swal.close();

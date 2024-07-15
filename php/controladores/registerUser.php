@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnregisteruser']) && 
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         echo 'Invalid email format';
         echo '<script>
-        console.log("error de email");
+        //console.log("error de email");
          await Swal.fire({
            title:" verifica tu direccion email",
            text:" verifica que tu cuenta de correo electronico sea valida",
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnregisteruser']) && 
     if ($registrar) {
         echo 'usuario creado con exito, redireccionando por favor espera';
         echo '<script>
-                console.log("usuario creado con exito");
+                //console.log("usuario creado con exito");
                 Swal.fire({
                     title: "Creación de cuenta exitosa",
                     text: "Redireccionando a inicio de sesión",
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnregisteruser']) && 
         exit();
     } else {
         echo '<script>
-                console.log("No se ha podido crear el usuario");
+                //console.log("No se ha podido crear el usuario");
                 Swal.fire({
                     title: "Error al crear la cuenta",
                     text: "Verifica que todos tus datos sean válidos",

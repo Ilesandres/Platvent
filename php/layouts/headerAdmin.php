@@ -82,3 +82,4 @@ if($Rol!=='Admin'){
     </div>
     </div>
     </nav>
+    <div id="contentExtra" class="navbar navbar-expand-lg navbar-light bg-light f-1" style="display:none;"></div>

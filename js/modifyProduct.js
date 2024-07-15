@@ -8,7 +8,7 @@ icon: 'warning',
 
 function previewImg() {
   let img = document.getElementById("imgAfter").value;
-  console.log(img);
+  //console.log(img);
   
   let impre=document.getElementById('previewImage');
   impre.src='/img/'+img;

@@ -26,7 +26,7 @@ document.getElementById("departamento").addEventListener("change", function (eve
 
 
 function loadMuni(departamentoId){
-console.log('depa ID '+departamentoId);
+//console.log('depa ID '+departamentoId);
   
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/php/controladores/BuscarMuniPorDep.php?idDepartamento=" + departamentoId, true);
