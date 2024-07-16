@@ -186,6 +186,66 @@ require_once '../layouts/headerAdmin.php';
 </div>
 
 
+<div class="modal fade " id="MoveUser" tabindex="-1" aria-labelledby="MoveUserLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content" style="background-color: #CFCFCF">
+      <div class="modal-header">
+        <h5 class="modal-title" id="MoveUserLabel">Transferir usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="mb-3">
+      <label for="NitEmpleadoTransfer">Nit empleado </label>
+        <input name="NitEmpleadoTransfer" type="text" placeholder="Nit o id encargado" id="NitEmpleadoTransfer" class="form-control" >
+      </div>
+      
+      <div class="mb-3">
+        <label for="oficinaNueva" class="form-label"> a Oficina</label>
+        <select  class="form-select form-select-lg"  name="oficinaNueva"  id="oficinaNueva" >
+        <option selected value="null">Select one</option>
+        <?php 
+            require_once '../controladores/config.php';
+            $connOficinas=conectarDB();
+            
+            $oficinas1="select *from oficina";
+            $oficinas=$conexion->query($oficinas1);
+            
+            if($oficinas && $oficinas->num_rows>0){
+                while($oficina =$oficinas->fetch_assoc()){
+                if($oficina['estado']!=='0'){
+                
+                    ?>
+                    <option value="<?=$oficina['id']?>"> <?= $oficina['nombre']?> </option>
+                    
+                    <?php 
+                }
+                }
+            }else{
+            
+            ?>
+            
+            
+            
+            <?php
+            
+            }
+            
+        ?>
+            
+        </select>
+      </div>
+      
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeMoveUser"  data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" onclick="transferirUser()" id="MoverEmpleado">enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script src="/js/oficinasAdmin.js"></script>
 

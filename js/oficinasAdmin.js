@@ -29,13 +29,23 @@ document.addEventListener('DOMContentLoaded',function(e){
     container.appendChild(option2);
     
     Texcontent.appendChild(container);
+    
     document.getElementById('agregarOficnaId').addEventListener('click', function(e){
     agregarOficina();
-})
+    })
+    document.getElementById('transferirUsuarioId').addEventListener('click', function(e){
+        transferirUsuario();
+    })
+
 
     
 })
 
+function transferirUsuario(){
+    let modalShow=document.getElementById('MoveUser');
+    let modal= new bootstrap.Modal(modalShow);
+    modal.show();
+}
 
 
 function agregarOficina(){
@@ -470,4 +480,62 @@ function showLoading() {
 function hideLoading() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('container1').style.display= 'block'
+}
+
+function hideTransfer(){
+    console.log('transfiriendo');
+}
+
+function transferirUser(){
+    let NitEmpleado=document.getElementById('NitEmpleadoTransfer').value;
+    let oficinaNueva=document.getElementById('oficinaNueva').value;
+    console.log('id '+NitEmpleado+' ofic'+oficinaNueva);
+    if(NitEmpleado.trim()!=='' && oficinaNueva!=='null' && NitEmpleado && oficinaNueva ){
+        Swal.fire({
+            
+            title: '¿Estas seguro de transferir el usuario?',
+            
+            text: "No se podra revertir esta accion",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, transferirlo'
+        }).then((response) => {
+            if(response.isConfirmed){
+            showLoading();
+                let formdata=new FormData();
+                formdata.append('NitEmpleado',NitEmpleado);
+                formdata.append('IdOficina',oficinaNueva);
+               
+                fetch('/php/controladores/TransferirUsuarioOficina.php',{
+                    method:'POST',
+                    body:formdata,
+                    mode:'cors'
+                    
+                }).then(response=>response.json())
+                .then((data)=>{
+                    console.log(data)
+                    
+                }).catch((err)=>{
+                    console.log(err);
+                }).finally(()=>{
+                    hideTransfer();
+                    hideLoading();
+                })
+            
+                console.log('usuario transferido');
+            }else{
+                console.log('accion cancelada');
+            }
+        }
+        )
+    }else{
+        Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Debes llenar todos los campos',
+        footer: '<a href="">Why do I have this issue?</a>'
+        })
+    }
 }
