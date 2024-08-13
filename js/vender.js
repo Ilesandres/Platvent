@@ -535,7 +535,7 @@ function loadProductosRestantes(){
                 row.appendChild(precioBaseCell);
             
                 const estadoCell = document.createElement('td');
-                estadoCell.innerText = producto.estado || 'N/A';
+                estadoCell.innerText = producto.estado==1?'nuevo':'usado' || 'N/A';
                 row.appendChild(estadoCell);
             
                 const accionesCell = document.createElement('td');

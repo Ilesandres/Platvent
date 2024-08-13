@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Bogota');
 // Configuración de la base de datos
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
@@ -17,4 +18,3 @@ function conectarDB() {
 
     return $conn;
 }
-

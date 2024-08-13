@@ -489,7 +489,6 @@ function hideTransfer(){
 function transferirUser(){
     let NitEmpleado=document.getElementById('NitEmpleadoTransfer').value;
     let oficinaNueva=document.getElementById('oficinaNueva').value;
-    console.log('id '+NitEmpleado+' ofic'+oficinaNueva);
     if(NitEmpleado.trim()!=='' && oficinaNueva!=='null' && NitEmpleado && oficinaNueva ){
         Swal.fire({
             
